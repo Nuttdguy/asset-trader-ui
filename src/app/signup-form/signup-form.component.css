@@ -2,13 +2,23 @@ html body {
 	background: #000 !important;
 }
 
-.pad-top {
-	padding-top: 120px;
+h1 {
+	color: rgb(255,255,255);
+	font-variant: small-caps;
+	font-size: 36px;
+	font-weight: 700;
+	
+	padding-top: 60px;
+	padding-bottom: 8px;
+	margin-bottom: 32px;
+	
+	border-bottom: 3px solid rgb(255,255,255);
+	width: 140px;
 }
 
 label {
 	color: rgb(255, 255, 255);
-	font-size: 27px;
+	font-size: 21px;
 	font-variant: small-caps;
 }
 
@@ -24,7 +34,7 @@ input.input-box {
 	box-shadow: none;
 	
 	margin: 12px 0;
-	width: 270px;
+	width: 320px;
 	
 	font-size: 21px;
 	color: rgba(255,255,255,.85);
@@ -40,8 +50,8 @@ button.btn-outline {
 	border: 1px solid #FF0;
 	background-color: transparent;
 	
-	width: 270px;
-	height: 44px;
+	width: 320px;
+	height: 54px;
 	
 	font-size: 21px;
 	font-variant: small-caps;
@@ -59,3 +69,9 @@ button.btn-outline:hover {
 	background: rgba(255, 255, 0, .85);
 }
 
+.has-error-message {
+	width: 320px;
+	color: red;
+	font-style: italic;
+	padding-bottom: 6px;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-form',
@@ -14,10 +14,10 @@ export class SignupFormComponent implements OnInit {
     
     // Construct the form model, refactor and create model
     this.signupForm = form.group({
-      'firstName' : '',
-      'lastName' : '',
-      'email' : '',
-      'password' : ''    
+      'firstName' : [null, Validators.required],
+      'lastName' : [null, Validators.compose([Validators.minLength(2), Validators.required])],
+      'email' : [null, Validators.compose([Validators.email, Validators.required])],
+      'password' : [null, Validators.compose([Validators.required, Validators.minLength(8)])]    
     });
   
   }
