@@ -1,115 +1,98 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 text-left">
-			<div class="col-xs-12 col-xs-offset-4">
-				<h1>Sign Up</h1>
-			</div>
-			<form [formGroup]="signupForm"
-				(ngSubmit)="onSubmitForm(signupForm.value)">
 
-				<div class="form-group" >
-					<div class="col-xs-12 col-xs-offset-4">
-						<label for="firstName">First Name</label>
-					</div>				
-					<div class="col-xs-12 col-xs-offset-4">						
-						<input type="text" id="firstName" class="input-box" placeholder="John"
-							[formControl]="signupForm.controls['firstName']" />						
-					</div>
-					<div class="col-xs-12 col-xs-offset-4 ">
-						<div class="has-error-message" 
-									*ngIf="signupForm.controls['firstName'].hasError('required')
-									&& signupForm.controls['firstName'].touched" >
-									First name is required
-						</div>
-					</div>
-				</div>
+<div class="text-left">
 
-
-				<div class="form-group">
-					<div class="col-xs-12 col-xs-offset-4">
-						<label for="lastName">Last Name</label>
-					</div>
-
-					<div class="col-xs-12 col-xs-offset-4">
-						<input type="text" id="firstName" class="input-box"
-							placeholder="Doe" [formControl]="signupForm.controls['lastName']" />
-					</div>
-					
-					<div class="col-xs-12 col-xs-offset-4">
-						<div class="has-error-message" 
-									*ngIf="signupForm.controls['lastName'].hasError('required')
-									&& signupForm.controls['lastName'].touched">
-									Last name is required field
-						</div>
-						<div class="has-error-message" 
-									*ngIf="signupForm.controls['lastName'].hasError('minlength')
-									&& signupForm.controls['lastName'].touched">
-									Must be at least two character long
-						</div>
-					</div>
-					
-					
-				</div>
-
-
-				<div class="form-group">
-					<div class="col-xs-12 col-xs-offset-4">
-						<label for="email">Email</label>
-					</div>
-					<div class="col-xs-12 col-xs-offset-4">
-						<input type="email" id="email" class="input-box"
-							placeholder="Johndoe@email.com "
-							[formControl]="signupForm.controls['email']" />
-					</div>
-					<div class="col-xs-12 col-xs-offset-4">
-						<div class="has-error-message"
-									*ngIf="signupForm.controls['email'].hasError('required')
-									&& signupForm.controls['email'].touched">
-									Email is required field
-						</div>
-						<div class="has-error-message"
-									*ngIf="signupForm.controls['email'].hasError('email')
-									&& signupForm.controls['email'].touched">
-									Please verify email is in correct format
-						</div>
-						
-					</div>
-					
-				</div>
-
-
-				<div class="form-group">
-					<div class="col-xs-12 col-xs-offset-4">
-						<label for="password">Password</label>
-					</div>
-					<div class="col-xs-12 col-xs-offset-4">
-						<input type="password" id="password" class="input-box" placeholder="password"
-							[formControl]="signupForm.controls['password']" />
-					</div>
-					
-					<div class="col-xs-12 col-xs-offset-4">
-						<div class="has-error-message"
-									*ngIf="signupForm.controls['password'].hasError('required')
-									&& signupForm.controls['password'].touched">
-									Password is required field
-						</div>
-						<div class="has-error-message"
-									*ngIf="signupForm.controls['password'].hasError('minlength')
-									&& signupForm.controls['password'].touched">
-									Password must be at least 8 characters
-						</div>
-					</div>
-					
-				</div>
-
-
-				<div class="form-group">
-					<div class="col-xs-12 col-xs-offset-4">
-						<button type="submit" class="btn btn-outline">Submit</button>
-					</div>
-				</div>
-
-			</form>
-		</div>
+	<div class="col-xs-12 col-xs-offset-1">
+		<h1>Sign Up</h1>
 	</div>
+	
+	<form 	[formGroup]="signupForm"
+			(ngSubmit)="onSubmitForm(signupForm.value)">
+
+		<div class="form-group" >	
+			<div class="col-xs-12 col-xs-offset-1">	
+				<label for="firstName">First Name</label>						
+				<input type="text" id="firstName" class="input-box" placeholder="John"
+					[formControl]="signupForm.controls['firstName']" />	
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['firstName'].hasError('required')
+							&& signupForm.controls['firstName'].touched" >
+							First name is required
+				</div>					
+			</div>
+		</div>
+
+
+		<div class="form-group">	
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="firstName" 
+						class="input-box"
+						placeholder="Doe" 
+						[formControl]="signupForm.controls['lastName']" />
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['lastName'].hasError('required')
+							&& signupForm.controls['lastName'].touched">
+							Last name is required field
+				</div>
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['lastName'].hasError('minlength')
+							&& signupForm.controls['lastName'].touched">
+							Must be at least two character long
+				</div>
+			</div>		
+		</div>
+
+
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="email">Email</label>
+				<input type="email" id="email" 
+						class="input-box"
+						placeholder="Johndoe@email.com "
+						[formControl]="signupForm.controls['email']" />
+						
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['email'].hasError('required')
+							&& signupForm.controls['email'].touched">
+							Email is required field
+				</div>
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['email'].hasError('email')
+							&& signupForm.controls['email'].touched">
+							Please verify email is in correct format
+				</div>
+			</div>		
+		</div>
+
+
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="password">Password</label>
+				<input type="password" id="password" 
+							class="input-box" 
+							placeholder="password"
+							[formControl]="signupForm.controls['password']" />
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['password'].hasError('required')
+							&& signupForm.controls['password'].touched">
+							Password is required field
+				</div>
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['password'].hasError('minlength')
+							&& signupForm.controls['password'].touched">
+							Password must be at least 8 characters
+				</div>
+			</div>		
+		</div>
+
+
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<button type="submit" 
+						class="btn btn-outline"
+						[disabled]="!signupForm.valid">Submit</button>
+			</div>
+		</div>
+
+	</form>
 </div>

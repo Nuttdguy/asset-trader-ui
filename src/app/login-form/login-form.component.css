@@ -13,10 +13,10 @@ h1 {
 	margin-bottom: 32px;
 	
 	border-bottom: 3px solid rgb(255,255,255);
-	width: 140px;
+	width: 180px;
 }
 
-label {
+label {	
 	color: rgb(255, 255, 255);
 	font-size: 21px;
 	font-variant: small-caps;
