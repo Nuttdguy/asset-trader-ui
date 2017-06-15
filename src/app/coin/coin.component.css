@@ -1,0 +1,86 @@
+table {
+	color: #fff;
+		
+	table-layout: fixed;
+	width: 80vw;	
+	overflow: visible;
+}
+
+table td:FIRST-CHILD,
+table th:FIRST-CHILD {
+	width: 44px;
+}
+
+table td, table th {
+	max-width: 100%;
+	text-align: center;
+}
+
+th {
+	font-size: 1.5em;
+	font-variant: small-caps;
+}
+
+
+h1 {
+	color: rgb(255,255,255);
+	font-variant: small-caps;
+	font-size: 36px;
+	font-weight: 700;
+	
+	margin-bottom: 8px;
+	
+	border-bottom: 3px solid rgb(255,255,255);
+	min-width: 300px;
+	width: 320px;
+}
+
+
+button.btn-outline {
+	border: 1px solid #FF0;
+	background-color: transparent;
+	
+	width: 270px;
+	height: 54px;
+	
+	font-size: 21px;
+	font-variant: small-caps;
+	font-weight: 700;
+	color: #FFF;
+	
+	border-radius: 0;
+	margin-bottom: 8px;
+}
+
+button.btn-outline {
+	margin-top: 16px;
+}
+
+button.btn-outline:hover {
+	background: rgba(255, 255, 0, .85);
+}
+
+p.required-params {
+	font-style: italic;
+	font-size: .7em;
+	
+	color: rgb(255, 0, 0);
+	margin: 0;
+	
+}
+
+label {
+	color: #fff;
+	font-variant: small-caps;
+}
+
+input.params-input {
+	color: #fff;
+	text-transform: uppercase;
+	background: transparent;
+	box-shadow: none;
+	
+	margin-bottom: 8px;
+	padding-left: 8px;
+	width: 232px;
+}

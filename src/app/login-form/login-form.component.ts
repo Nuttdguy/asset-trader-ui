@@ -31,6 +31,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmitForm(form: FormGroup) {
+    
+    // TODO connect to back-end service, authenticate and return
     this.username = this.loginForm.controls['username'].value;
     console.log(this.username);
     this.authenticated = true;

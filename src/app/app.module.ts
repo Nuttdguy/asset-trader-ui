@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TraderProfileComponent } from './trader-profile/trader-profile.component';
+import { CoinComponent } from './coin/coin.component';
+import { CoinService } from './services/coin.service';
+import { AccountSummaryComponent } from './account-summary/account-summary.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,8 @@ import { TraderProfileComponent } from './trader-profile/trader-profile.componen
     SignupFormComponent,
     LoginFormComponent,
     TraderProfileComponent,
+    CoinComponent,
+    AccountSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,7 @@ import { TraderProfileComponent } from './trader-profile/trader-profile.componen
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [CoinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
