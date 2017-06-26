@@ -7,54 +7,54 @@ import { Sell } from './sell.model';
 export class Result {
   
   // getmarkets()
-  BaseCurrency: string;
-  BaseCurrencyLong: string;
-  MarketCurrency: string;
-  MarketCurrencyLong: string;
-  MarketName: string;
-  MinTradeSize: number; 
-  LogoUrl: string;
-  Notice: string;
-  IsSponsored: boolean;
+  baseCurrency: string;
+  baseCurrencyLong: string;
+  marketCurrency: string;
+  marketCurrencyLong: string;
+  marketName: string;
+  minTradeSize: number; 
+  logoUrl: string;
+  notice: string;
+  isSponsored: boolean;
   
   // getcurrencies()  
-  Currency: string;
-  CurrencyLong: string;
-  MinConfirmation: number;
-  TxFee: number;
-  IsActive: boolean;
-  CoinType: string; 
-  BaseAddress: string;
+  currency: string;
+  currencyLong: string;
+  minConfirmation: number;
+  txFee: number;
+  isActive: Boolean;
+  coinType: string; 
+  baseAddress: string;
   
   // getticker()
-  Bid: number;
-  Ask: number;
-  Last: number;
+  bid: number;
+  ask: number;
+  last: number;
   
   // getmarketsummaries()
-  High: number;
-  Low: number;
-  Volume: number;
-  BaseVolume: number;
-  TimeStamp: Date;
-  OpenBuyOrders: number;
-  OpenSellOrders: number;
-  PrevDay: number;
-  Created: Date;
+  high: number;
+  low: number;
+  volume: number;
+  baseVolume: number;
+  timeStamp: Date;
+  openBuyOrders: number;
+  openSellOrders: number;
+  prevDay: number;
+  created: Date;
   
   // getorderbook()
-  Quantity: number;
-  Rate: number;
+  quantity: number;
+  rate: number;
   buy: Buy[];
   sell: Sell[];
   
   
   // getmarkethistory()
-  Id: number;
-  Price: number;
-  Total: number;
-  FillType: string;
-  OrderType: string;
+  id: number;
+  price: number;
+  total: number;
+  fillType: string;
+  orderType: string;
   
   // market/buylimit()
   

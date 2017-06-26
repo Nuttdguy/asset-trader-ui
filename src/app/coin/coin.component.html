@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-6 text-left align-middle">
 			<h1 *ngIf="apiCalled == '' ">Select action</h1>
-			<h1 *ngIf="apiCalled == 'onGetMarket' ">Get Coin Markets</h1>
+			<h1 *ngIf="apiCalled == 'onGetCoinMarket' ">Get Coin Markets</h1>
 			<h1 *ngIf="apiCalled == 'onGetCurrencies' ">Get Currencies</h1>
 			<h1 *ngIf="apiCalled == 'onGetMarketSummaries' ">Get Markets Summaries</h1>
 			
@@ -13,13 +13,13 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12 align-middle">
-			<button class="btn btn-outline" (click)="onGetMarket($event)">Get Coins</button>
+			<button class="btn btn-outline" (click)="onGetCoinMarket()">Get Coins</button>
 			<button class="btn btn-outline" (click)="onGetCurrencies()">Get Currencies</button>
 			<button class="btn btn-outline" (click)="onGetMarketSummaries()">Get Markets Summaries</button>
 			<br>
 			<button class="btn btn-outline" (click)="onGetTicker()">* Get Ticker</button>			
-			<button class="btn btn-outline" (click)="onGetMarketSummary()">* Get Market History</button>
 			<button class="btn btn-outline" (click)="onGetOrderBook()"># Get Order Book</button>
+			<button class="btn btn-outline" (click)="onGetMarketSummary()">* Get Market Summary</button>
 		</div>
 	</div>
 	
@@ -33,10 +33,6 @@
 			<label for='actionType'>buy, sell or both</label><br>
 			<input type="text" [(ngModel)]="actionType" name="actionType" class="params-input" placeholder="BOTH" />
 		</div>
-		<div class="col-md-3">
-			<label for='depth'>depth</label><br>
-			<input type="number" [(ngModel)]="depth" name="depth" class="params-input" [min]="10" placeholder="10" />
-		</div>
 	</div>
 	<p class="required-params">* Requires market name, (BTC-LTC)</p>
 	<p class="required-params"># Requires market name, (BTC-LTC), type, (buy, sell, both), depth, (max 50)</p>
@@ -46,10 +42,10 @@
 
 
 	<div class="row">
-		<label *ngIf="marketName != ''">{{marketName}}</label>
+		<label hidden=true *ngIf="marketName != ''">{{marketName}}</label>
 		<table class="table table-inverse table-responsive">
 			<!-- START == onGetMarket -->
-			<thead *ngIf="coin && apiCalled == 'onGetMarket'">
+			<thead *ngIf="result && apiCalled == 'onGetCoinMarket'">
 				<tr>
 					<th>#</th>
 					<th>logo</th>
@@ -57,48 +53,44 @@
 					<th>market currency</th>
 					<th>market currency long</th>
 					<th>market name</th>
-					<th>is active</th>
 					<th>create date</th>
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == 'onGetMarket' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
+			<tbody *ngIf="result && apiCalled == 'onGetCoinMarket' ">
+				<tr *ngFor="let r of result; let i = index">
 					<th scope="row">{{i+1}}</th>
-					<td><img style="width: 34px; height: 34px;" src="{{c.LogoUrl}}" /></td>
-					<td class="text-capitalize">{{c.BaseCurrency}}</td>
-					<td class="text-capitalize">{{c.MarketCurrency}}</td>
-					<td class="text-capitalize">{{c.MarketCurrencyLong}}</td>
-					<td class="text-capitalize">{{c.MarketName}}</td>
-					<td class="text-capitalize">{{c.IsActive}}</td>
-					<td class="text-capitalize">{{c.Created}}</td>
+					<td><img style="width: 34px; height: 34px;" src="{{r.logoUrl}}" /></td>
+					<td class="text-capitalize">{{r.baseCurrency}}</td>
+					<td class="text-capitalize">{{r.marketCurrency}}</td>
+					<td class="text-capitalize">{{r.marketCurrencyLong}}</td>
+					<td class="text-capitalize">{{r.marketName}}</td>
+					<td class="text-capitalize">{{r.created}}</td>
 				</tr>
 			</tbody>
 			<!-- END == onGetMarket -->
 			
 			<!-- START == onGetCurrencies  -->
-			<thead *ngIf="coin && apiCalled == 'onGetCurrencies' ">
+			<thead *ngIf="result && apiCalled == 'onGetCurrencies' ">
 				<tr>
 					<th>#</th>
 					<th>currency</th>
 					<th>currency long</th>
 					<th>min confirmation</th>
 					<th>tx fee</th>
-					<th>is active</th>
 					<th>coin type</th>
 					<!-- <th>base address</th> -->
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == 'onGetCurrencies' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
+			<tbody *ngIf="result && apiCalled == 'onGetCurrencies' ">
+				<tr *ngFor="let r of result; let i = index ">
 					<th scope="row">{{i+1}}</th>
-					<td class="text-capitalize">{{c.Currency}}</td>
-					<td class="text-capitalize">{{c.CurrencyLong}}</td>
-					<td class="text-capitalize">{{c.MinConfirmation}}</td>
-					<td class="text-capitalize">{{c.TxFee}}</td>
-					<td class="text-capitalize">{{c.IsActive}}</td>
-					<td class="text-capitalize">{{c.CoinType}}</td>
+					<td class="text-capitalize">{{r.currency}}</td>
+					<td class="text-capitalize">{{r.currencyLong}}</td>
+					<td class="text-capitalize">{{r.minConfirmation}}</td>
+					<td class="text-capitalize">{{r.txFee}}</td>
+					<td class="text-capitalize">{{r.coinType}}</td>
 					<!-- <td class="text-capitalize">{{c.BaseAddress}}</td> -->
 				</tr>
 			</tbody>
@@ -106,35 +98,35 @@
 			
 			
 			<!-- START == onGetMarketSummaries  -->
-			<thead *ngIf="coin && apiCalled == 'onGetMarketSummaries' ">
+			<thead *ngIf="result && apiCalled == 'onGetMarketSummaries' ">
 				<tr>
 					<th>#</th>
 					<th>market name</th>
 					<th>high</th>
 					<th>low</th>
 					<th>volume</th>
-					<th>base volume</th>
 					<th>time stamp</th>
+					<th>ask</th>
+					<th>bid</th>
 					<th>open buy orders</th>
 					<th>open sell orders</th>
 					<th>previous day</th>
-					<th>created</th>
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == 'onGetMarketSummaries' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
+			<tbody *ngIf="result && apiCalled == 'onGetMarketSummaries' ">
+				<tr *ngFor="let r of result; let i = index ">
 					<th scope="row">{{i+1}}</th>
-					<td class="text-capitalize">{{c.MarketName}}</td>
-					<td class="text-capitalize">{{c.High}}</td>
-					<td class="text-capitalize">{{c.Low}}</td>
-					<td class="text-capitalize">{{c.Volume}}</td>
-					<td class="text-capitalize">{{c.BaseVolume}}</td>
-					<td class="text-capitalize">{{c.TimeStamp}}</td>
-					<td class="text-capitalize">{{c.OpenBuyOrders}}</td>
-					<td class="text-capitalize">{{c.OpenSellOrders}}</td>
-					<td class="text-capitalize">{{c.PrevDay}}</td>
-					<td class="text-capitalize">{{c.Created}}</td>
+					<td class="text-capitalize">{{r.marketName}}</td>
+					<td class="text-capitalize">{{r.high.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.low.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.volume.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.timeStamp}}</td>
+					<td class="text-capitalize">{{r.ask.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.bid.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.openBuyOrders}}</td>
+					<td class="text-capitalize">{{r.openSellOrders}}</td>
+					<td class="text-capitalize">{{r.prevDay}}</td>
 										
 				</tr>
 			</tbody>
@@ -153,46 +145,44 @@
 			</thead>
 			
 			<tbody *ngIf="orderBook && apiCalled == 'onGetTicker' ">
-				<tr>
+				<tr *ngFor="let order of orderBook; let i = index ">
 					<th scope="row">1</th>
-					<td class="text-capitalize">{{orderBook.result.Bid.toFixed(8)}}</td>
-					<td class="text-capitalize">{{orderBook.result.Ask.toFixed(8)}}</td>
-					<td class="text-capitalize">{{orderBook.result.Last.toFixed(8)}}</td>
+					<td class="text-capitalize">{{order.bid.toFixed(8)}}</td>
+					<td class="text-capitalize">{{order.ask.toFixed(8)}}</td>
+					<td class="text-capitalize">{{order.last.toFixed(8)}}</td>
 				</tr>
 			</tbody>
 			<!-- END == onGetTicker  -->
 			
 			
 			<!-- START == onGetMarketSummary  -->
-			<thead *ngIf="coin && apiCalled == 'onGetMarketSummary' ">
+			<thead *ngIf="result && apiCalled == 'onGetMarketSummary' ">
 				<tr>
-					<th>#</th>
 					<th>market name</th>
 					<th>high</th>
 					<th>low</th>
 					<th>volume</th>
-					<th>base volume</th>
 					<th>time stamp</th>
+					<th>ask</th>
+					<th>bid</th>
 					<th>open buy orders</th>
 					<th>open sell orders</th>
 					<th>previous day</th>
-					<th>created</th>
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == 'onGetMarketSummary' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
-					<th scope="row">{{i+1}}</th>
-					<td class="text-capitalize">{{c.MarketName}}</td>
-					<td class="text-capitalize">{{c.High}}</td>
-					<td class="text-capitalize">{{c.Low}}</td>
-					<td class="text-capitalize">{{c.Volume}}</td>
-					<td class="text-capitalize">{{c.BaseVolume}}</td>
-					<td class="text-capitalize">{{c.TimeStamp}}</td>
-					<td class="text-capitalize">{{c.OpenBuyOrders}}</td>
-					<td class="text-capitalize">{{c.OpenSellOrders}}</td>
-					<td class="text-capitalize">{{c.PrevDay}}</td>
-					<td class="text-capitalize">{{c.Created}}</td>
+			<tbody *ngIf="result && apiCalled == 'onGetMarketSummary' ">
+				<tr *ngFor="let res of result; let i = index ">
+					<td class="text-capitalize">{{res.marketName}}</td>
+					<td class="text-capitalize">{{res.high.toFixed(8)}}</td>
+					<td class="text-capitalize">{{res.low.toFixed(8)}}</td>
+					<td class="text-capitalize">{{res.volume.toFixed(8)}}</td>
+					<td class="text-capitalize">{{res.timeStamp}}</td>
+					<td class="text-capitalize">{{res.ask.toFixed(8)}}</td>
+					<td class="text-capitalize">{{res.bid.toFixed(8)}}</td>
+					<td class="text-capitalize">{{res.openBuyOrders}}</td>
+					<td class="text-capitalize">{{res.openSellOrders}}</td>
+					<td class="text-capitalize">{{res.prevDay}}</td>
 										
 				</tr>
 			</tbody>
@@ -201,19 +191,23 @@
 			
 			
 			<!-- START == onGetOrderBook  -->
-			<thead *ngIf="coin && apiCalled == 'onGetOrderBook' ">
+			<thead *ngIf="orderBook && apiCalled == 'onGetOrderBook' ">
 				<tr>
-					<th>#</th>
-					<th>Quantity</th>
-					<th>Rate</th>
+					<th>Market Name</th>
+					<th>quantity</th>
+					<th>rate</th>
+					<th>order type</th>
+					<th>Time stamp</th>
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == 'onGetOrderBook' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
-					<th scope="row">{{i}}</th>
-					<td class="text-capitalize">{{c.Quantity.toFixed(8)}}</td>
-					<td class="text-capitalize">{{c.Rate.toFixed(8)}}</td>
+			<tbody *ngIf="orderBook && apiCalled == 'onGetOrderBook' ">
+				<tr *ngFor="let o of orderBook; let i = index ">
+					<th class="text-capitalize">{{o.coin.marketName}}</th>
+					<td class="text-capitalize">{{o.quantity.toFixed(8)}}</td>
+					<td class="text-capitalize">{{o.rate.toFixed(8)}}</td>
+					<td class="text-capitalize">{{o.orderType}}</td>
+					<td class="text-capitalize">{{o.orderBookDateTime}}</td>
 				</tr>
 			</tbody>
 			
@@ -222,7 +216,7 @@
 			
 			
 			<!-- START == ??  -->
-			<thead *ngIf="coin && apiCalled == '??' ">
+			<thead *ngIf="result && apiCalled == '??' ">
 				<tr>
 					<th>#</th>
 					<th>id</th>
@@ -233,21 +227,17 @@
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="coin && apiCalled == '??' ">
-				<tr *ngFor="let c of coin.result; let i = index ">
+			<tbody *ngIf="result && apiCalled == '??' ">
+				<tr *ngFor="let r of result; let i = index ">
 					<th scope="row">{{i}}</th>
-					<td class="text-capitalize">{{c.Id}}</td>
-					<td class="text-capitalize">{{c.Price.toFixed(8)}}</td>
-					<td class="text-capitalize">{{c.Total.toFixed(8)}}</td>
-					<td class="text-capitalize">{{c.FillType}}</td>
-					<td class="text-capitalize">{{c.OrderType}}</td>
+					<td class="text-capitalize">{{r.id}}</td>
+					<td class="text-capitalize">{{r.price.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.total.toFixed(8)}}</td>
+					<td class="text-capitalize">{{r.fillType}}</td>
+					<td class="text-capitalize">{{r.orderType}}</td>
 				</tr>
 			</tbody>
 			<!-- END == ??  -->
-			
-
-		
-			
 			
 		</table>
 		<br /> <br /> <br />

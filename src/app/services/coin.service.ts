@@ -9,7 +9,7 @@ import { Result } from '../coin/result.model';
 
 @Injectable()
 export class CoinService {
-  
+
   http: Http;
   baseUrl: string;
   getMarkets: string;
@@ -22,48 +22,50 @@ export class CoinService {
 
   constructor(http: Http) {
     this.http = http;
-    
-    this.baseUrl = 'https://bittrex.com/api/v1.1/';
-    this.getMarkets = 'public/getmarkets';
-    this.getCurrencies = 'public/getcurrencies';   
-    this.getMarketSummaries = 'public/getmarketsummaries';
-    
+
+    this.baseUrl = 'http://localhost:8080/trader/coins';
+
+    // Change service to get results from database
+    this.getMarkets = '/getmarkets';
+
+    this.getCurrencies = '/getcurrencies';
+    this.getMarketSummaries = '/getmarketsummaries';
+
     // requires parameters
-    this.getTicker = 'public/getticker';
-    this.getMarketSummary = 'public/getmarketsummary';
-    this.getOrderBook = 'public/getorderbook';
+    this.getTicker = '/getticker/';
+    this.getMarketSummary = '/getmarketsummary/';
+    this.getOrderBook = '/getorderbook/';
+
+
   }
   
-  onGetMarket(): Observable<Coin> {
+  onGetCoinMarket(): Observable<Result> {
     const params = {};
-    const k =  this.http.get(this.baseUrl + this.getMarkets ).map(res => res.json() as Coin);
+    const k = this.http.get(this.baseUrl + this.getMarkets).map(res => res.json() as Result);
     return k;
   }
-  
-  onGetCurrencies(): Observable<Coin> {
-    return this.http.get(this.baseUrl + this.getCurrencies).map(res => res.json() as Coin);
+
+  onGetCurrencies(): Observable<Result> {
+    return this.http.get(this.baseUrl + this.getCurrencies).map(res => res.json() as Result);
   }
-  
-  onGetMarketSummaries(): Observable<Coin> {
-    return this.http.get(this.baseUrl + this.getMarketSummaries).map(res => res.json() as Coin);
+
+  onGetMarketSummaries(): Observable<Result> {
+    return this.http.get(this.baseUrl + this.getMarketSummaries).map(res => res.json() as Result);
   }
-  
-  
+
+
   onGetTicker(marketName: string): Observable<OrderBook> {
-    return this.http.get(this.baseUrl + this.getTicker + '?market=' + marketName).map(res => res.json() as OrderBook);
+    return this.http.get(this.baseUrl + this.getTicker + marketName).map(res => res.json() as OrderBook);
   }
-  
-  onGetMarketSummary(marketName: string): Observable<Coin> {
-    return this.http.get(this.baseUrl + this.getMarketSummary + '?market=' + marketName).map(res => res.json() as Coin);
+
+  onGetMarketSummary(marketName: string): Observable<Result> {
+    return this.http.get(this.baseUrl + this.getMarketSummary + marketName).map(res => res.json() as Result);
   }
-  
-  onGetOrderBook(marketName: string, actionType: string, depth: string): Observable<Coin> {
-    return this.http.get(this.baseUrl + this.getOrderBook
-            + '?market='+ marketName
-            + '&type='  + actionType
-            + '&depth=' + depth).map(res => res.json() as Coin);
+
+  onGetOrderBook(marketName: string, actionType: string, depth: string): Observable<OrderBook> {
+    return this.http.get(this.baseUrl + this.getOrderBook + marketName + '&' + actionType).map(res => res.json() as OrderBook);
   }
-  
+
 
 }
 

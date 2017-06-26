@@ -10,6 +10,7 @@ import { TraderProfileComponent } from './trader-profile/trader-profile.componen
 import { CoinComponent } from './coin/coin.component';
 import { CoinService } from './services/coin.service';
 import { AccountSummaryComponent } from './account-summary/account-summary.component';
+import { ValuesPipe } from './pipes/values.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AccountSummaryComponent } from './account-summary/account-summary.compo
     TraderProfileComponent,
     CoinComponent,
     AccountSummaryComponent,
+    ValuesPipe,
   ],
   imports: [
     BrowserModule,
