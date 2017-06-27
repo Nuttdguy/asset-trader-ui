@@ -6,43 +6,28 @@ import 'rxjs/add/operator/map';
 import { Coin } from '../coin/coin.model';
 import { OrderBook } from '../coin/orderbook.model';
 import { Result } from '../coin/result.model';
+import { CoinMarket } from '../coin/coin-market.model';
+
 
 @Injectable()
 export class CoinService {
 
-  http: Http;
   baseUrl: string;
-  getMarkets: string;
-  getCurrencies: string;
-  getTicker: string;
-  getMarketSummaries: string;
-  getMarketSummary: string;
-  getOrderBook: string;
+  getMarkets = '/getmarkets';
+  getCurrencies: '/getcurrencies';
+  getMarketSummaries: '/getmarketsummaries';
+  
+  getTicker: '/getticker/';
+  getMarketSummary: '/getmarketsummary/';
+  getOrderBook: '/getorderbook/';
+  getMarketHistory = '/getmarkethistory/'
 
-
-  constructor(http: Http) {
-    this.http = http;
-
+  constructor(private http: Http) {
     this.baseUrl = 'http://localhost:8080/trader/coins';
-
-    // Change service to get results from database
-    this.getMarkets = '/getmarkets';
-
-    this.getCurrencies = '/getcurrencies';
-    this.getMarketSummaries = '/getmarketsummaries';
-
-    // requires parameters
-    this.getTicker = '/getticker/';
-    this.getMarketSummary = '/getmarketsummary/';
-    this.getOrderBook = '/getorderbook/';
-
-
   }
   
-  onGetCoinMarket(): Observable<Result> {
-    const params = {};
-    const k = this.http.get(this.baseUrl + this.getMarkets).map(res => res.json() as Result);
-    return k;
+  onGetCoinMarket(): Observable<CoinMarket> {
+    return this.http.get(this.baseUrl + this.getMarkets).map(res => res.json() );
   }
 
   onGetCurrencies(): Observable<Result> {
@@ -65,7 +50,10 @@ export class CoinService {
   onGetOrderBook(marketName: string, actionType: string, depth: string): Observable<OrderBook> {
     return this.http.get(this.baseUrl + this.getOrderBook + marketName + '&' + actionType).map(res => res.json() as OrderBook);
   }
-
+  
+  onGetMarketHistory(marketName: string): Observable<Result> {
+    return this.http.get(this.baseUrl + this.getMarketHistory + marketName).map( res => res.json() as Result)
+  }
 
 }
 

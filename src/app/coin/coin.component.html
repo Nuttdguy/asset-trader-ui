@@ -7,8 +7,9 @@
 			<h1 *ngIf="apiCalled == 'onGetMarketSummaries' ">Get Markets Summaries</h1>
 			
 			<h1 *ngIf="apiCalled == 'onGetTicker' ">Get Ticker</h1>
-			<h1 *ngIf="apiCalled == 'onGetMarketHistory' ">Get Market History</h1>
+			<h1 *ngIf="apiCalled == 'onGetMarketSummary' ">Get Market Summary</h1>
 			<h1 *ngIf="apiCalled == 'onGetOrderBook' ">Get Order Book</h1>
+			<h1 *ngIf="apiCalled == 'onGetMarketHistory' ">Get Market History</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -20,6 +21,8 @@
 			<button class="btn btn-outline" (click)="onGetTicker()">* Get Ticker</button>			
 			<button class="btn btn-outline" (click)="onGetOrderBook()"># Get Order Book</button>
 			<button class="btn btn-outline" (click)="onGetMarketSummary()">* Get Market Summary</button>
+			<br>
+			<button class="btn btn-outline" (click)="onGetMarketHistory()">* Get Market History</button>
 		</div>
 	</div>
 	
@@ -42,10 +45,9 @@
 
 
 	<div class="row">
-		<label hidden=true *ngIf="marketName != ''">{{marketName}}</label>
 		<table class="table table-inverse table-responsive">
 			<!-- START == onGetMarket -->
-			<thead *ngIf="result && apiCalled == 'onGetCoinMarket'">
+			<thead *ngIf="coinMarkets && apiCalled == 'onGetCoinMarket'">
 				<tr>
 					<th>#</th>
 					<th>logo</th>
@@ -57,15 +59,15 @@
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="result && apiCalled == 'onGetCoinMarket' ">
-				<tr *ngFor="let r of result; let i = index">
+			<tbody *ngIf="coinMarkets && apiCalled == 'onGetCoinMarket' ">
+				<tr *ngFor="let coin of coinMarkets; let i = index">
 					<th scope="row">{{i+1}}</th>
-					<td><img style="width: 34px; height: 34px;" src="{{r.logoUrl}}" /></td>
-					<td class="text-capitalize">{{r.baseCurrency}}</td>
-					<td class="text-capitalize">{{r.marketCurrency}}</td>
-					<td class="text-capitalize">{{r.marketCurrencyLong}}</td>
-					<td class="text-capitalize">{{r.marketName}}</td>
-					<td class="text-capitalize">{{r.created}}</td>
+					<td><img style="width: 34px; height: 34px;" src="{{coin?.logoUrl}}" /></td>
+					<td class="text-capitalize">{{coin?.baseCurrency}}</td>
+					<td class="text-capitalize">{{coin?.marketCurrency}}</td>
+					<td class="text-capitalize">{{coin?.marketCurrencyLong}}</td>
+					<td class="text-capitalize">{{coin?.marketName}}</td>
+					<td class="text-capitalize">{{coin?.created}}</td>
 				</tr>
 			</tbody>
 			<!-- END == onGetMarket -->
@@ -215,11 +217,12 @@
 			
 			
 			
-			<!-- START == ??  -->
-			<thead *ngIf="result && apiCalled == '??' ">
+			<!-- START == onGetMarketHistory  -->
+			<thead *ngIf="result && apiCalled == 'onGetMarketHistory' ">
 				<tr>
 					<th>#</th>
 					<th>id</th>
+					<th>quantity</th>
 					<th>price</th>
 					<th>total</th>
 					<th>fill type</th>
@@ -227,10 +230,11 @@
 				</tr>
 			</thead>
 			
-			<tbody *ngIf="result && apiCalled == '??' ">
+			<tbody *ngIf="result && apiCalled == 'onGetMarketHistory' ">
 				<tr *ngFor="let r of result; let i = index ">
 					<th scope="row">{{i}}</th>
 					<td class="text-capitalize">{{r.id}}</td>
+					<td class="text-capitalize">{{r.quantity.toFixed(8)}}</td>
 					<td class="text-capitalize">{{r.price.toFixed(8)}}</td>
 					<td class="text-capitalize">{{r.total.toFixed(8)}}</td>
 					<td class="text-capitalize">{{r.fillType}}</td>

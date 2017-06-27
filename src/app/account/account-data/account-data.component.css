@@ -1,0 +1,31 @@
+
+h1 {
+	color: rgb(255,255,255);
+	font-variant: small-caps;
+	font-size: 36px;
+	font-weight: 700;
+	
+	margin-bottom: 8px;
+
+	min-width: 300px;
+	width: 320px;
+}
+
+
+ul {
+	float: left;
+	display: inline-block;
+	
+	width: 100%;
+}
+
+li, a {
+	display: inline-block;
+	color: #fff;
+}
+
+
+a:after {
+	padding-left: 16px;
+	content: "//";
+}
