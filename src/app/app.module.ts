@@ -15,6 +15,7 @@ import { AccountComponent } from './account/account.component';
 import { AccountInfoComponent } from './account/account-info/account-info.component';
 import { AccountDataComponent } from './account/account-data/account-data.component';
 import { MarketComponent } from './market/market.component';
+import { MarketInfoService } from './services/market-info.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { MarketComponent } from './market/market.component';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [CoinService],
+  providers: [CoinService, MarketInfoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

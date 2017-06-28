@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 
 import { Coin } from '../coin/coin.model';
 import { OrderBook } from '../coin/orderbook.model';

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, PipeTransform, Pipe } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Coin } from './coin.model';
 import { CoinService } from '../services/coin.service';
