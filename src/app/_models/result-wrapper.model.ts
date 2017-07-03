@@ -1,4 +1,4 @@
-export class AccountResult {
+export class ResultWrapper {
   
   success: string;
   message: string;

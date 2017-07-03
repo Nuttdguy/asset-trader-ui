@@ -1,8 +1,8 @@
+import { ResultWrapper } from '../_models/result-wrapper.model';
 import { Injectable } from '@angular/core';
 import { Http, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { MarketInfo } from '../_models/market-info.model';
 
 @Injectable()
 export class MarketInfoService {
@@ -16,8 +16,8 @@ export class MarketInfoService {
     this.baseUrl = 'http://localhost:8080/trader/market/bittrex';
    }
  
-  onGetCoinMarketInfo( ): Observable<MarketInfo> {
-      return this.http.get(this.baseUrl).map( res => res.json() as MarketInfo)
+  onGetCoinMarketInfo( ): Observable<ResultWrapper> {
+      return this.http.get(this.baseUrl).map( res => res.json() )
   }
   
 

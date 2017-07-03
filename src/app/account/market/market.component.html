@@ -18,7 +18,7 @@
 		</tr>
 	</thead>
 	<tbody *ngIf="marketInfo != null">
-		<tr *ngFor="let mView of marketInfo;">
+		<tr *ngFor="let mView of marketInfo.result;">
 			<td><img style="width: 27px; height: 27px;" src="{{mView?.logo}}" alt="coinLogo" /></td>
 			<td>{{mView?.marketCurrencyLong}}</td>
 			<td>{{mView?.sellOrders}}</td>

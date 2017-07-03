@@ -1,2 +1,13 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	padding-top: 12px;
+	background-color: #FF0;
+	border-radius: 0;
+	z-index: 100;
+}
 
-
+.container-body {
+	margin-top: 80px;
+}

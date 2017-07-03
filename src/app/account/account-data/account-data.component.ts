@@ -1,4 +1,4 @@
-import { AccountResult } from '../../_models/account-result.model';
+import { ResultWrapper } from '../../_models/result-wrapper.model';
 import { AccountDataService } from '../../_services/account-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
@@ -12,10 +12,10 @@ import { Http } from '@angular/http';
 
 export class AccountDataComponent implements OnInit {
 
-  accountDataBalance: AccountResult;
-  accountDataOrderHistory: AccountResult;
-  accountDataWithdrawalHistory: AccountResult;
-  accountDataDepositHistory: AccountResult;
+  accountDataBalance: ResultWrapper;
+  accountDataOrderHistory: ResultWrapper;
+  accountDataWithdrawalHistory: ResultWrapper;
+  accountDataDepositHistory: ResultWrapper;
   
   showOrders=false;
   showBalances=false;

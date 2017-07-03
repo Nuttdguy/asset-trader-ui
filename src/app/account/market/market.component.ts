@@ -1,5 +1,5 @@
 
-import { MarketInfo } from '../../_models/market-info.model';
+import { ResultWrapper } from '../../_models/result-wrapper.model';
 import { MarketInfoService, CoinService } from '../../_services/index';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class MarketComponent implements OnInit {
 
-  marketInfo: MarketInfo;
+  marketInfo: ResultWrapper;
   marketNameValue?: string;
   marketCLongValue: string;
   marketCurrencyValue: string;

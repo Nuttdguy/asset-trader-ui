@@ -1,4 +1,4 @@
-export * from './account-result.model';
+export * from './result-wrapper.model';
 export * from './accountDataBalance.model';
 export * from './accountDataOrderHistory.model';
 export * from './buy.model';

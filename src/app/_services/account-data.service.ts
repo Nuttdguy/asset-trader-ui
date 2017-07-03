@@ -1,4 +1,4 @@
-import { AccountResult } from '../_models/account-result.model';
+import { ResultWrapper } from '../_models/result-wrapper.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -14,31 +14,31 @@ export class AccountDataService {
 
   constructor(private http: Http) { }
 
-  onGetAccountBalances(): Observable<AccountResult> {
-    return this.http.get(this.baseUrl + this.balances).map(res => res.json() as AccountResult);
+  onGetAccountBalances(): Observable<ResultWrapper> {
+    return this.http.get(this.baseUrl + this.balances).map(res => res.json() );
   }
 
-  onGetAccountOrderHistory(marketName?: string): Observable<AccountResult> {
+  onGetAccountOrderHistory(marketName?: string): Observable<ResultWrapper> {
     if (marketName === undefined) {
-      return this.http.get(this.baseUrl + this.orderHistory).map(res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.orderHistory).map(res => res.json());
     } else {
-      return this.http.get(this.baseUrl + this.orderHistory + '/' + marketName).map(res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.orderHistory + '/' + marketName).map(res => res.json());
     }
   }
 
-  onGetWithdrawalHistory(currency?: string): Observable<AccountResult> {
+  onGetWithdrawalHistory(currency?: string): Observable<ResultWrapper> {
     if (currency === undefined) {
-      return this.http.get(this.baseUrl + this.withdrawalHistory).map( res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.withdrawalHistory).map( res => res.json());
     } else {
-      return this.http.get(this.baseUrl + this.withdrawalHistory  + '/' +  currency).map( res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.withdrawalHistory  + '/' +  currency).map( res => res.json());
     }
   }
   
-  onGetDepositHistory(currency?: string): Observable<AccountResult> {
+  onGetDepositHistory(currency?: string): Observable<ResultWrapper> {
     if (currency === undefined) {
-      return this.http.get(this.baseUrl + this.depositHistory).map( res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.depositHistory).map( res => res.json() );
     } else {
-      return this.http.get(this.baseUrl + this.depositHistory + '/' + currency).map( res => res.json() as AccountResult);
+      return this.http.get(this.baseUrl + this.depositHistory + '/' + currency).map( res => res.json());
     }
   }
 
