@@ -1,35 +1,104 @@
 
-<div class="row">
+<div class="col-md-12">
 	<h1>Account</h1>
 	<ul class="nav navbar-inverse">
-		<li><a href="balances">Balances </a></li>
-		<li><a href="history">History </a></li>
-		<li><a href="order">Order </a></li>
+		<li><a (click)="onGetAccountBalance()" >Balances </a></li>
+		<li><a (click)="onGetAccountDataOrderHistory()"> Order History </a></li>
+		<li><a (click)="onGetWithdrawalHistory()" >Withdrawal History </a></li>
+		<li><a (click)="onGetDepositHistory()" >Deposit History </a></li>
 	</ul>
 </div>
 
-<div class="row">
+<!-- BEGIN :: SHOW BALANCES, HISTORY, ORDER-HISTORY  -->
+<div class="col-md-12">
 	<table class="table table-inverse table-responsive">
-		<thead>
+	
+		<thead *ngIf="accountDataBalance != null && showBalances == true">
 			<tr>
 				<th>Logo</th>
 				<th>Market Name</th>
-				<th>Todays High</th>
-				<th>Todays Low</th>
-				<th>Quantity</th>
 				<th>Balance</th>
+				<th>Available</th>
+				<th>Get Addresses</th>
 			</tr>
 		</thead>
 
-		<tbody>
-			<tr>
-				<td>Logo PH</td>
-				<td>Market PH</td>
-				<td>High PH</td>
-				<td>Low PH</td>
-				<td>QTY PH</td>
-				<td>Balance PH</td>
+		<tbody *ngIf="accountDataBalance != null  && showBalances == true">
+			<tr *ngFor="let data of accountDataBalance.result; let i = index">
+				<td><img style="width: 27px; height: 27px;" src="{{data?.logoUrl}}" alt="Logo" /></td>
+				<td>{{data?.currency}}</td>
+				<td>{{data?.balance}}</td>
+				<td>{{data?.available}}</td>
+				<td><input type="button" class="btn-outline" value="Show Address"/></td>
 			</tr>
 		</tbody>
+		
+		<thead *ngIf="accountDataOrderHistory != null  && showOrders == true">
+			<tr>
+				<th>Logo</th>
+				<th>Exchange</th>
+				<th>Order Type</th>
+				<th>Quantity</th>
+				<th>Price /Unit</th>
+				<th>Price</th>
+				<th>Commission</th>
+			</tr>
+		</thead>
+
+		<tbody *ngIf="accountDataOrderHistory != null  && showOrders == true">
+			<tr *ngFor="let data of accountDataOrderHistory.result; let i = index">
+				<td><img style="width: 27px; height: 27px;" src="{{data?.logoUrl}}" alt="Logo" /></td>
+				<td>{{data?.exchange}} </td>
+				<td>{{data?.orderType}} </td>
+				<td>{{data?.quantity}} </td>
+				<td>{{data?.pricePerUnit}} </td>
+				<td>{{data?.price}} </td>
+				<td>{{data?.commission}} </td>
+			</tr>
+		</tbody>
+		
+		<thead *ngIf="accountDataWithdrawalHistory != null  && showWithdrawalHistory == true">
+			<tr>
+				<th>Logo</th>
+				<th>Currency</th>
+				<th>Amount</th>
+				<th>Tx Cost</th>
+				<th>Opened</th>
+			</tr>
+		</thead>
+
+		<tbody *ngIf="accountDataWithdrawalHistory != null  && showWithdrawalHistory == true">
+			<tr *ngFor="let data of accountDataWithdrawalHistory.result; let i = index">
+				<td><img style="width: 27px; height: 27px;" src="{{data?.logoUrl}}" alt="Logo" /></td>
+				<td>{{data?.currency}} </td>
+				<td>{{data?.amount}} </td>
+				<td>{{data?.txCost}} </td>
+				<td>{{data?.opened}} </td>
+			</tr>
+		</tbody>
+		
+		<thead *ngIf="accountDataDepositHistory != null  && showDepositHistory == true">
+			<tr>
+				<th>Logo</th>
+				<th>Currency</th>
+				<th>Amount</th>
+				<th>Confirmations</th>
+				<th>Last Updated</th>
+				<th>Tx ID</th>
+			</tr>
+		</thead>
+
+		<tbody *ngIf="accountDataDepositHistory != null  && showDepositHistory == true">
+			<tr *ngFor="let data of accountDataDepositHistory.result; let i = index">
+				<td><img style="width: 27px; height: 27px;" src="{{data?.logoUrl}}" alt="Logo" /></td>
+				<td>{{data?.currency}} </td>
+				<td>{{data?.amount}} </td>
+				<td>{{data?.confirmations}} </td>
+				<td>{{data?.lastUpdated}} </td>
+				<td><a class="btn btn-outline">View Tx ID</a></td>
+				<!-- <td>{{data?.txId}} </td> -->
+			</tr>
+		</tbody>
+		
 	</table>
 </div>

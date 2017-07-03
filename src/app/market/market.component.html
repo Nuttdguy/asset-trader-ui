@@ -1,15 +1,14 @@
-<h1>Market Info - Display Filters</h1>
+<!-- <h1>Market Info - Display Filters</h1>
 <div class="row">
-	<div class="col-md-2"></div>
+	<div class="col-md-1"></div>
 	<input type="submit" 
 			class="btn-submit" 
 			value="Apply Filters" 
 			(click)="onGetCoinMarketInfo()" />
-	<div class="col-md-2"></div>
 </div>
 
-<!-- DISABLE FORM - ENABLE FILTER AFTER RESULT IS RETURNED -->
-<!-- <form #marketCoinInfoFilter="ngForm">
+DISABLE FORM - ENABLE FILTER AFTER RESULT IS RETURNED
+<form #marketCoinInfoFilter="ngForm">
 	<div class="row">
 		<div class="col-md-10">
 			<div class="row" >
@@ -29,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-</form > -->
+</form >
 
 <table class="table table-inverse">
 	<thead>
@@ -43,13 +42,14 @@
 	</thead>
 	<tbody *ngIf="marketInfo != null">
 		<tr *ngFor="let mView of marketInfo;">
-			<td><img style="width: 27px; height: 27px;" src="{{mView.logo}}" alt="coinLogo" /></td>
-			<td>{{mView.marketCurrencyLong}}</td>
-			<td>{{mView.sellOrders}}</td>
-			<td>{{mView.buyOrders}}</td>
-			<td>{{mView.low}}</td>
+			<td><img style="width: 27px; height: 27px;" src="{{mView?.logo}}" alt="coinLogo" /></td>
+			<td>{{mView?.marketCurrencyLong}}</td>
+			<td>{{mView?.sellOrders}}</td>
+			<td>{{mView?.buyOrders}}</td>
+			<td>{{mView?.low}}</td>
 		</tr>
 	</tbody>
 	
 </table>
 
+ -->

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Coin } from './coin.model';
-import { CoinService } from '../services/coin.service';
-import { OrderBook } from './orderbook.model';
-import { Result } from './result.model';
-import { CoinMarket } from './coin-market.model';
+import { Coin } from '../_models/coin.model';
+import { CoinService } from '../_services/coin.service';
+import { OrderBook } from '../_models/orderbook.model';
+import { Result } from '../_models/result.model';
+import { CoinMarket } from '../_models/coin-market.model';
 
 
 

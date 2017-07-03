@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http, Response, Request, RequestMethod } from '@angular/http';
 
@@ -12,6 +12,9 @@ import { Http, Response, Request, RequestMethod } from '@angular/http';
 
 export class LoginFormComponent implements OnInit {
 
+  @Output() showLogin = false;
+  @Output() register = false;
+  
   username: string;
   loginForm: FormGroup;
   authenticated: boolean;
@@ -35,6 +38,8 @@ export class LoginFormComponent implements OnInit {
     // TODO connect to back-end service, authenticate and return
     this.username = this.loginForm.controls['username'].value;
     console.log(this.username);
+    this.showLogin = false;
+    this.register = false;
     this.authenticated = true;
   }
 

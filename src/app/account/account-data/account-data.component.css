@@ -27,5 +27,26 @@ li, a {
 
 a:after {
 	padding-left: 16px;
-	content: "//";
+}
+
+
+table {
+	color: #fff;
+	table-layout: fixed;
+	overflow-x: auto;
+}
+
+table td:FIRST-CHILD,
+table th:FIRST-CHILD {
+	width: 44px;
+}
+
+table td, table th {
+	text-align: center;
+	max-width: 100%;
+}
+
+td {
+	font-size: .8em;
+	font-variant: small-caps;
 }

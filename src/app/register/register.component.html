@@ -1,0 +1,183 @@
+
+<div class="text-left">
+
+	<div class="col-xs-12 col-xs-offset-1">
+		<h1>Register</h1>
+	</div>
+
+<!-- TODO ... RETURN AND ADD USERNAME.VALID AFTER COMPLETE WIREUP -->
+	<form name="form" 
+		#f="ngForm" novalidate
+		(ngSubmit)="f.form.valid && register()">
+
+
+		<!-- BEGIN -- FIRST-NAME  -->
+		<div class="form-group"
+			[ngClass]="{ 'has-error': f.submitted  }" >
+			
+			<label for="firstName">First Name</label> 
+			
+			<input type="text" 
+				[ngClass]="{ 'has-error': f.submitted }"
+			 	class="input-box" 
+			 	name="firstName"
+				[(ngModel)]="model.firstName"
+				#firstName="ngModel" required />
+				
+			<div
+				*ngIf="f.submitted && !firstName.valid"
+				class="has-error-message" 
+				[ngClass]="{ 'has-error': f.submitted  }" >
+				First name is required</div>
+		</div>
+		
+		<!-- BEGIN || LAST-NAME -->
+		<div class="form-group" 
+			[ngClass]="{ 'has-error': f.submitted }">
+			
+            <label for="lastName">Last Name</label>
+            
+            <input type="text" 
+            		class="input-box" 
+            		name="lastName" 
+            		[(ngModel)]="model.lastName" 
+            		#lastName="ngModel" required />
+            		
+            <div 
+            	*ngIf="f.submitted && !lastName.valid" 
+            	class="has-error-message">
+            	Last Name is required</div>
+        </div>
+		
+		<!-- BEGIN || USERNAME  -->
+		<div class="form-group" 
+			[ngClass]="{ 'has-error': f.submitted }">
+			
+            <label for="username">Username (email) </label>
+            
+            <input type="email" 
+            		class="input-box" 
+            		name="username" 
+            		[(ngModel)]="model.username" 
+            		#username="ngModel" required />
+            		
+            <div 
+            	*ngIf="f.submitted && !username.valid" 
+            	class="has-error-message">
+            	Username/email is required</div>
+        </div>
+		
+		<!-- BEGIN || PASSWORD  -->
+		<div class="form-group" 
+			[ngClass]="{ 'has-error': f.submitted }">
+			
+            <label for="password">Password </label>
+            
+            <input type="password" 
+            		class="input-box" 
+            		name="password" 
+            		[(ngModel)]="model.password" 
+            		#password="ngModel" required />
+            		
+            <div 
+            	*ngIf="f.submitted && !password.valid " 
+            	class="has-error-message">
+            	Password is required</div>
+        </div>
+		
+		<!-- BEGIN || SUBMIT  -->
+		<div class="form-group">
+			<button [disabled]="loading" class="btn btn-outline" >Register</button>
+			<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+			<a [routerLink]="['/login']" class="btn btn-outline">Cancel</a>
+		</div>
+
+	</form>
+	<!-- 		<div class="form-group" >	
+			<div class="col-xs-12 col-xs-offset-1">	
+				<label for="firstName">First Name</label>						
+				<input type="text" id="firstName" class="input-box" placeholder="John"
+					[formControl]="signupForm.controls['firstName']" />	
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['firstName'].hasError('required')
+							&& signupForm.controls['firstName'].touched" >
+							First name is required
+				</div>					
+			</div>
+		</div> -->
+
+	<!-- 
+		<div class="form-group">	
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="firstName" 
+						class="input-box"
+						placeholder="Doe" 
+						[formControl]="signupForm.controls['lastName']" />
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['lastName'].hasError('required')
+							&& signupForm.controls['lastName'].touched">
+							Last name is required field
+				</div>
+				<div class="has-error-message" 
+							*ngIf="signupForm.controls['lastName'].hasError('minlength')
+							&& signupForm.controls['lastName'].touched">
+							Must be at least two character long
+				</div>
+			</div>		
+		</div> -->
+
+	<!-- 
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="email">Email</label>
+				<input type="email" id="email" 
+						class="input-box"
+						placeholder="Johndoe@email.com "
+						[formControl]="signupForm.controls['email']" />
+						
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['email'].hasError('required')
+							&& signupForm.controls['email'].touched">
+							Email is required field
+				</div>
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['email'].hasError('email')
+							&& signupForm.controls['email'].touched">
+							Please verify email is in correct format
+				</div>
+			</div>		
+		</div> -->
+
+	<!-- 
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<label for="password">Password</label>
+				<input type="password" id="password" 
+							class="input-box" 
+							placeholder="password"
+							[formControl]="signupForm.controls['password']" />
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['password'].hasError('required')
+							&& signupForm.controls['password'].touched">
+							Password is required field
+				</div>
+				<div class="has-error-message"
+							*ngIf="signupForm.controls['password'].hasError('minlength')
+							&& signupForm.controls['password'].touched">
+							Password must be at least 8 characters
+				</div>
+			</div>		
+		</div> -->
+
+	<!-- 
+		<div class="form-group">
+			<div class="col-xs-12 col-xs-offset-1">
+				<button type="submit" 
+						class="btn btn-outline"
+						[disabled]="!signupForm.valid">Submit</button>
+			</div>
+		</div>
+ -->
+	<!-- 	</form> -->
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { MarketInfo } from '../market/market-info.model';
+import { MarketInfo } from '../_models/market-info.model';
 
 @Injectable()
 export class MarketInfoService {

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
 		<div class="col-md-6 text-left align-middle">
 			<h1 *ngIf="apiCalled == '' ">Select action</h1>
@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	
-	<!-- TODO, implement drop-down box with options  -->
+	TODO, implement drop-down box with options 
 	<div class="row">
 		<div class="col-md-3">
 			<label for='marketName'>market name</label><br>
@@ -46,7 +46,7 @@
 
 	<div class="row">
 		<table class="table table-inverse table-responsive">
-			<!-- START == onGetMarket -->
+			START == onGetMarket
 			<thead *ngIf="coinMarkets && apiCalled == 'onGetCoinMarket'">
 				<tr>
 					<th>#</th>
@@ -70,9 +70,9 @@
 					<td class="text-capitalize">{{coin?.created}}</td>
 				</tr>
 			</tbody>
-			<!-- END == onGetMarket -->
+			END == onGetMarket
 			
-			<!-- START == onGetCurrencies  -->
+			START == onGetCurrencies 
 			<thead *ngIf="result && apiCalled == 'onGetCurrencies' ">
 				<tr>
 					<th>#</th>
@@ -81,7 +81,7 @@
 					<th>min confirmation</th>
 					<th>tx fee</th>
 					<th>coin type</th>
-					<!-- <th>base address</th> -->
+					<th>base address</th>
 				</tr>
 			</thead>
 			
@@ -93,13 +93,13 @@
 					<td class="text-capitalize">{{r.minConfirmation}}</td>
 					<td class="text-capitalize">{{r.txFee}}</td>
 					<td class="text-capitalize">{{r.coinType}}</td>
-					<!-- <td class="text-capitalize">{{c.BaseAddress}}</td> -->
+					<td class="text-capitalize">{{c.BaseAddress}}</td>
 				</tr>
 			</tbody>
-			<!-- END == onGetCurrencies  -->
+			END == onGetCurrencies 
 			
 			
-			<!-- START == onGetMarketSummaries  -->
+			START == onGetMarketSummaries 
 			<thead *ngIf="result && apiCalled == 'onGetMarketSummaries' ">
 				<tr>
 					<th>#</th>
@@ -132,11 +132,11 @@
 										
 				</tr>
 			</tbody>
-			<!-- END == onGetMarketSummaries  -->
+			END == onGetMarketSummaries 
 			
 			
 			
-			<!-- START == onGetTicker  -->
+			START == onGetTicker 
 			<thead *ngIf="orderBook && apiCalled == 'onGetTicker' ">
 				<tr>
 					<th>#</th>
@@ -154,10 +154,10 @@
 					<td class="text-capitalize">{{order.last.toFixed(8)}}</td>
 				</tr>
 			</tbody>
-			<!-- END == onGetTicker  -->
+			END == onGetTicker 
 			
 			
-			<!-- START == onGetMarketSummary  -->
+			START == onGetMarketSummary 
 			<thead *ngIf="result && apiCalled == 'onGetMarketSummary' ">
 				<tr>
 					<th>market name</th>
@@ -188,11 +188,11 @@
 										
 				</tr>
 			</tbody>
-			<!-- END == onGetMarketSummary  -->
+			END == onGetMarketSummary 
 			
 			
 			
-			<!-- START == onGetOrderBook  -->
+			START == onGetOrderBook 
 			<thead *ngIf="orderBook && apiCalled == 'onGetOrderBook' ">
 				<tr>
 					<th>Market Name</th>
@@ -213,11 +213,11 @@
 				</tr>
 			</tbody>
 			
-			<!-- END == onGetOrderBook  -->
+			END == onGetOrderBook 
 			
 			
 			
-			<!-- START == onGetMarketHistory  -->
+			START == onGetMarketHistory 
 			<thead *ngIf="result && apiCalled == 'onGetMarketHistory' ">
 				<tr>
 					<th>#</th>
@@ -241,9 +241,9 @@
 					<td class="text-capitalize">{{r.orderType}}</td>
 				</tr>
 			</tbody>
-			<!-- END == ??  -->
+			END == ?? 
 			
 		</table>
 		<br /> <br /> <br />
 	</div>
-</div>
+</div> -->

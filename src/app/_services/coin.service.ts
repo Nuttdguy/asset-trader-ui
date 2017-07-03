@@ -2,10 +2,10 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Coin } from '../coin/coin.model';
-import { OrderBook } from '../coin/orderbook.model';
-import { Result } from '../coin/result.model';
-import { CoinMarket } from '../coin/coin-market.model';
+import { Coin } from '../_models/coin.model';
+import { OrderBook } from '../_models/orderbook.model';
+import { Result } from '../_models/result.model';
+import { CoinMarket } from '../_models/coin-market.model';
 
 
 @Injectable()

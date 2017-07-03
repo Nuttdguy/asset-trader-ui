@@ -1,8 +1,8 @@
-import { CoinService } from '../services/coin.service';
-import { MarketInfoService } from '../services/market-info.service';
+import { CoinService } from '../_services/coin.service';
+import { MarketInfoService } from '../_services/market-info.service';
 import { Component, OnInit } from '@angular/core';
 
-import { MarketInfo } from './market-info.model';
+import { MarketInfo } from '../_models/market-info.model';
 
 @Component({
   selector: 'app-market',
@@ -44,14 +44,12 @@ export class MarketComponent implements OnInit {
 
   ngOnInit() {
     this.marketInfo = null;
+    this.onGetCoinMarketInfo();
   }
   
+  
   onGetCoinMarketInfo() {
-//   this.selectedOptions() 
-//   let i: number;
-//   for (i=0; i < this.marketInfoOptions.length; i++ ) {
-//     console.log(this.marketInfoOptions[i].checked);
-//   }
+
     console.log('Request started ... ')
     this.marketInfoService
       .onGetCoinMarketInfo()
