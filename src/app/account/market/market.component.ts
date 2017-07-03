@@ -1,8 +1,8 @@
-import { CoinService } from '../_services/coin.service';
-import { MarketInfoService } from '../_services/market-info.service';
+
+import { MarketInfo } from '../../_models/market-info.model';
+import { MarketInfoService, CoinService } from '../../_services/index';
 import { Component, OnInit } from '@angular/core';
 
-import { MarketInfo } from '../_models/market-info.model';
 
 @Component({
   selector: 'app-market',
