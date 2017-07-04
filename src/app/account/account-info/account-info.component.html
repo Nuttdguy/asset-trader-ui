@@ -1,2 +1,32 @@
-
-<h1>THIS AREA IS FOR CHARTS AND INFORMATIONAL STUFF </h1>
+<!-- 
+<p>THIS AREA IS FOR CHARTS AND INFORMATIONAL STUFF</p> -->
+<div class="container-marketinfo">
+	<div class="col-md-6">
+	
+		<h2>Total Available </h2>
+		<h2>$ 2,678.97 (USD)</h2>
+	
+	<!-- 	<div *ngIf="bitcoinPrice != null" >
+			<div *ngFor="let b of bitcoinPrice.data;" >
+				<label>{{b?.amount}} == THIS IS LABEL </label>
+			</div>
+		</div> -->
+	</div>
+	
+	
+	<div class="col-md-6">
+		<canvas baseChart [data]="doughnutChartData"
+			[labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+			(chartHover)="chartHovered($event)"
+			(chartClick)="chartClicked($event)">
+		</canvas>
+	</div>
+	<div class="row">
+		<div class='padding-left'>
+			<input class="btn-outline" type="button" (click)="showAvgReturn()" value="Return (1m)" />	
+			<input class="btn-outline" type="button" (click)="showAccountChange()" value="Change % (1m)" />		
+			<input class="btn-outline" type="button" (click)="showTotalTransaction()" value="Transaction (Total)" /> 
+			<input class="btn-outline" type="button" (click)="showTotalPaidCommissions()" value="Paid Commissions (Total)" />	
+		</div>
+	</div>
+</div>

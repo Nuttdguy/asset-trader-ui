@@ -16,6 +16,7 @@ import { HomeComponent } from './home/index';
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ProfileComponent, FavoriteComponent, ApiexchangeComponent, NetworkComponent, PasswordComponent } from './home/index';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProfileComponent, FavoriteComponent, ApiexchangeComponent, NetworkCompo
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ChartsModule
   ],
   providers: [
     CoinService,

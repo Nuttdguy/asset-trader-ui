@@ -50,3 +50,19 @@ td {
 	font-size: .8em;
 	font-variant: small-caps;
 }
+
+input.btn-outline {
+	border: 1px solid #FF0;
+	background: transparent;
+	
+	font-size: .8em;
+	font-variant: small-caps;
+	font-weight: 700;
+	color: #FFF;
+	border-radius: 0;
+	margin-bottom: 8px;
+}
+
+input.btn-outline:hover, input.btn-submit:hover {
+	background: rgba(255, 255, 0, .85);
+}

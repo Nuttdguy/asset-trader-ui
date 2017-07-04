@@ -14,17 +14,6 @@ import { Component, OnInit } from '@angular/core';
 export class MarketComponent implements OnInit {
 
   marketInfo: ResultWrapper;
-  marketNameValue?: string;
-  marketCLongValue: string;
-  marketCurrencyValue: string;
-  volumeValue: string;
-  priceValue: string;
-  buyOrdersValue: string;
-  sellOrdersValue: string;
-  changePercentValue: string;
-  highValue: string;
-  lowValue: string;
-  lastValue: string;
   
   marketInfoOptions = [
     {id: '1', param: 'marketName', display: 'Market Name', checked:false},
@@ -43,7 +32,6 @@ export class MarketComponent implements OnInit {
   constructor(private marketInfoService: MarketInfoService) { }
 
   ngOnInit() {
-    this.marketInfo = null;
     this.onGetCoinMarketInfo();
   }
   
@@ -56,23 +44,13 @@ export class MarketComponent implements OnInit {
       .subscribe( data => {
         this.marketInfo = data;
         console.log('this is marketInfo')
-        console.log(data);
+        // console.log(data);
       },
       error => {
         console.log('This is an error');
         console.log(error);
       }); 
     
-  }
-  
-  selectedOptions() {
-    // THIS METHOD SHOULD CAPTURE, CHANGE THE VALUES OF THE OBJECT
-    this.marketInfoOptions
-        .filter(opt => opt.checked )
-        .map(opt => opt.display)
-    
-  }
-  
-  
+  }  
 
 }

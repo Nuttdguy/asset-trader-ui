@@ -9,4 +9,9 @@ export * from './orderbook.model';
 export * from './result.model';
 export * from './sell.model';
 export * from './users.model';
+export * from './btcwrapper';
+export * from './dataPrice';
+export * from './BTCWarnings';
+
+
 
