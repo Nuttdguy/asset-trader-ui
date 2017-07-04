@@ -1,0 +1,41 @@
+
+.btn-submit,
+.btn-delete {
+	background: transparent;
+	width: 20%;
+}
+
+input {
+	border-radius: 0px;
+}
+
+.btn-submit {
+	border: 1px solid #FF0;
+}
+
+.btn-outline {
+	border: 1px solid #FF0;
+	background-color: transparent;
+	
+	font-size: .8em;
+	font-variant: small-caps;
+	font-weight: 700;
+	
+	height: 34px;
+	color: #FFF;
+	border-radius: 0;
+	margin-bottom: 8px;
+}
+
+.btn-outline:hover, 
+.btn-submit:hover {
+	background-color: rgba(255, 255, 0, .85);
+}
+
+.btn-delete:hover {
+	background-color: rgba(255, 0, 0, .85);
+}
+.btn-delete {
+	border: 1px solid #F00;
+	background-color: rgba(255, 0, 0, 1);
+}

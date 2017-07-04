@@ -17,6 +17,7 @@ import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ProfileComponent, FavoriteComponent, ApiexchangeComponent, NetworkComponent, PasswordComponent } from './home/index';
 import { ChartsModule } from 'ng2-charts';
+import { TradeComponent } from './account/trade/trade.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ChartsModule } from 'ng2-charts';
     ApiexchangeComponent,
     NetworkComponent,
     PasswordComponent,
+    TradeComponent,
   ],
   imports: [
     BrowserModule,

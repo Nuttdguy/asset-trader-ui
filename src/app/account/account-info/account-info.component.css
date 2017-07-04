@@ -1,4 +1,13 @@
 
+.return {
+	padding-top: 12px;
+}
+
+.return-link {
+	color: rgba(255,255,255,.95);
+	font-variant: small-caps;
+	font-size: 1.5em;
+}
 
 .container-marketinfo {
 	padding-top: 27px;
