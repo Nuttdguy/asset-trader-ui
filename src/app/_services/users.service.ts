@@ -7,13 +7,9 @@ export class UserService {
 
   baseUrl = 'http://localhost:8080/trader/user';
 
-
   constructor(private http: Http) { }
 
-  getAll() {
-    return this.http.get(this.baseUrl, this.jwt()).map((response: Response) => response.json());
-  }
-
+  
   getById(id: number) {
     return this.http.get(this.baseUrl + '/' + id, this.jwt()).map((response: Response) => response.json());
   }
@@ -35,6 +31,9 @@ export class UserService {
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
       let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      headers.set('Content-Type', 'application/json');   
+      headers.set('Access-Control-Allow-Origin', '*');  
       return new RequestOptions({ headers: headers });
     }
   }

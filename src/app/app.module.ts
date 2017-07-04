@@ -6,31 +6,20 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
 import { CoinComponent } from './coin/coin.component';
-import { CoinService } from './_services/coin.service';
 import { ValuesPipe } from './_pipes/values.pipe';
-import { AccountComponent } from './account/account.component';
-import { AccountInfoComponent } from './account/account-info/account-info.component';
-import { MarketComponent } from './account/market/market.component';
-import { AccountDataService } from './_services/account-data.service';
-import { AlertService } from './_services/alert.service';
-import { AuthenticationService } from './_services/authentication.service';
-import { MarketInfoService } from './_services/market-info.service';
-import { UserService } from './_services/users.service';
-import { AccountDataComponent } from './account/account-data/account-data.component';
+import { MarketComponent, AccountDataComponent, AccountInfoComponent, AccountComponent } from './account/index';
+import { AccountDataService, AlertService, AuthenticationService, MarketInfoService, UserService, CoinService } from './_services/index';
 import { RegisterComponent } from './register/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ProfileComponent, FavoriteComponent, ApiexchangeComponent, NetworkComponent, PasswordComponent } from './home/index';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupFormComponent,
-    LoginFormComponent,
     CoinComponent,
     ValuesPipe,
     AccountComponent,
@@ -41,6 +30,11 @@ import { AuthGuard } from './_guards/auth.guard';
     LoginComponent,
     HomeComponent,
     AlertComponent,
+    ProfileComponent,
+    FavoriteComponent,
+    ApiexchangeComponent,
+    NetworkComponent,
+    PasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,11 +43,11 @@ import { AuthGuard } from './_guards/auth.guard';
     routing
   ],
   providers: [
-    CoinService, 
-    MarketInfoService, 
-    AccountDataService, 
-    AlertService, 
-    AuthenticationService, 
+    CoinService,
+    MarketInfoService,
+    AccountDataService,
+    AlertService,
+    AuthenticationService,
     UserService,
     AuthGuard
   ],

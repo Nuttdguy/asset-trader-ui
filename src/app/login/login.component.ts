@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+  
+  
 export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
@@ -27,11 +29,7 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.loading = true;
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.set('Access-Control-Allow-Origin', '*');
-    
+    this.loading = true;    
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe( data => { 
         

@@ -1,17 +1,45 @@
 
-<h1>Hi {{currentUser.firstName}}!</h1>
-<p>Welcome</p>
-<h3>All registered users:</h3>
+<div id="wrapper" class="toggled">
+	<div id="sidebar-wrapper">
+		<ul class="sidebar-nav">
+			<li class="sidebar-brand"><span class="glyphicon glyphicon-new-window" >View</span></li>
+			<li><a [routerLink]="['/account']"><span class="glyphicon glyphicon-stats" >Account/Market</span></a></li>
+			<li class="sidebar-brand"><span class="glyphicon glyphicon-cog" >Settings</span></li>
+			
+			<li><a href="#"><span class="glyphicon glyphicon-user">Profile</span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-star" >Favorite</span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-transfer" >API/Exchange</span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-user" >Network</span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-lock" >Password</span></a></li>
+			<li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
+		</ul>
+	</div>
 
-<ul>
-	<li *ngFor="let user of usersArr">
-		{{user.username}}
-		({{user.firstName}} {{user.lastName}}) - 
+	<div id="page-content-wrapper">
+		<div class="container-fluid">
 		
-	<a
-		(click)="deleteUser(user.id)">Delete</a>
-	</li>
-</ul>
-<p>
-	<a [routerLink]="['/login']">Logout</a>
-</p>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+				<h4><span>Welcome</span> {{currentUser.firstName}} {{currentUser.lastName}}!</h4>
+					<app-profile></app-profile>
+ 					// TODO LIST
+					<ul>
+						<li>ADD CHARTS AND GRAPHS</li>
+						<li>ADD URL TO ACCOUNT</li>
+						<li>ADD FORM -- COLLECT ADDITIONAL INFORMATION FOR NEW ACCOUNT</li>
+						<li>ADD PEOPLE TO NETWORK FORM</li>
+						<li>ADD COINS AS FAVORITES</li>
+						<li>VIEW FAVORITE COINS</li>
+						<li>CHANGE SETTINGS // API CREDENTIALS</li>
+						<li>CHANGE PASSWORD OR OTHER IDENTIFYING INFORMATION</li>
+					</ul>
+				
+				</div>
+			</div>
+		</div>		
+	</div> <!--  END PAGE-CONTENT-WRAPPER  -->
+	
+</div><!--  END WRAPPER  -->
+
+

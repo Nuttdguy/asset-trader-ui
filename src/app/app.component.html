@@ -1,12 +1,18 @@
 
-<div class="container container-wide">
-	<div class="row">
-	
-		<app-alert></app-alert>
-		<router-outlet></router-outlet>
 
+<!-- TODO >> IMPLEMENT CODE TO HIDE/SWITCH OUT NAVIGATION BAR -->
+<nav class="navbar fixed-top ">
+	<div class="navbar-text">
+		<a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in" >Login</span></a> 
 	</div>
-</div> 
+</nav>
+
+<div class="container-body">
+
+	<app-alert></app-alert>
+	<router-outlet></router-outlet>
+
+</div>
 
 
 
