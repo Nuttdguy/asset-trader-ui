@@ -12,13 +12,45 @@ import { Component, OnInit } from '@angular/core';
   
 export class HomeComponent implements OnInit {
   currentUser: Users;
+  isApiExchangeLinkActive: boolean;
+  isProfileActive: boolean;
+  isNetworkActive: boolean;
+  isPasswordActive: boolean;
+  isFavoriteActive: boolean;
 
   constructor(private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
    }
 
   ngOnInit() {
+    
   }
   
+  showProfile() {
+    this.isApiExchangeLinkActive = false;
+    this.isProfileActive = true ;
+    this.isNetworkActive = false;
+    this.isPasswordActive = false;
+  }
   
+  showApiExchange() {
+    this.isApiExchangeLinkActive = true;
+    this.isProfileActive = false ;
+    this.isNetworkActive = false;
+    this.isPasswordActive = false;
+  }
+  
+  showNetwork() {
+    this.isApiExchangeLinkActive = false;
+    this.isProfileActive = false ;
+    this.isNetworkActive = true;
+    this.isPasswordActive = false;
+  }
+  
+  showPassword() {
+    this.isApiExchangeLinkActive = false;
+    this.isProfileActive = false ;
+    this.isNetworkActive = false;
+    this.isPasswordActive = true;
+  }
 }

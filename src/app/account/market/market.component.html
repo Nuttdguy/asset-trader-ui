@@ -1,11 +1,19 @@
-<h1>Market Info - Display Filters</h1>
+
 <div class="row">
-	<div class="col-md-1"></div>
-	<input type="submit" 
-			class="btn-submit" 
-			value="Apply Filters" 
-			(click)="onGetCoinMarketInfo()" />
-</div>
+	<div class="col-md-6">
+		<h1>Market Info</h1>
+		<p>* Click coin - add as favorite</p>
+	</div>
+
+	<div class="col-md-6 ">
+		<input type="text" 
+				class="btn-submit " 
+				value="Update Market Info" 
+				(click)="onGetCoinMarketInfo()" /> 
+	</div>	
+ </div>					
+
+
 
 <table class="table table-inverse">
 	<thead>
@@ -19,11 +27,15 @@
 	</thead>
 	<tbody *ngIf="marketInfo != null">
 		<tr *ngFor="let mView of marketInfo.result;">
-			<td><img style="width: 27px; height: 27px;" src="{{mView?.logo}}" alt="coinLogo" /></td>
-			<td>{{mView?.marketCurrencyLong}}</td>
+			<td>				
+				<span #coinId hidden="true">{{mView?.id}}</span>
+				<img (click)="onSaveFavorite(coinId.textContent, marketName.textContent)" 
+					style="width: 27px; height: 27px;" src="{{mView?.logo}}" alt="coinLogo" />
+			</td>
+			<td #marketName >{{mView?.marketCurrencyLong}}</td>
 			<td>{{mView?.sellOrders}}</td>
 			<td>{{mView?.buyOrders}}</td>
-			<td>{{mView?.low}}</td>
+			<td>{{mView?.last.toFixed(8)}}</td>
 		</tr>
 	</tbody>
 	

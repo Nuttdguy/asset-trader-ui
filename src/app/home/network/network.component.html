@@ -1,23 +1,47 @@
 <div class="row">
 
 	<div class="col-md-8 col-md-offset-1">
-		<h3>Network / Social Settings</h3>				
+		<h3>Network / Social Settings</h3>
 		<div class="row">
-		
-		  <div class="col-sm-6">
-		    <div class="form-group">
-		      <label for="inputFriendEmail">Email (To add as contact)</label>
-		      <input type="text" class="form-control" id="inputFriendEmail" placeholder="Friend Email">
-		    </div>
-		  </div>
-	
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="FirstName">First Name</label> <input #firstName
+						type="text" class="form-control" id="FirstName"
+						placeholder="First Name">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="LastName">Last Name</label> <input #lastName
+						type="text" class="form-control" id="LastName"
+						placeholder="Last Name">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="Email">Email (To add as contact)</label> <input #email
+						type="email" class="form-control" id="Email"
+						placeholder="Email To Add">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="message">Notes (120 max) </label> 
+					<input #message maxlength="120" type="text" class="form-control" id="message"
+						placeholder="message">
+				</div>
+			</div>			
 		</div>
-				
-		<button (click)="onAddFriendToNetwork()" class=" btn-outline btn-submit">Add Friend</button>
+		
+		<button (click)="onAddFriendToNetwork(email.value, message.value, firstName.value, lastName.value)" class=" btn-outline btn-submit">Add Friend</button>
 	</div>
-	
-			  
+
+
 	<!--  TODO -- MUST Display current list of friends  -->
 	<!-- <button (click)="onRemoveFriendFromNetwork()" class=" btn-outline btn-delete">Remove Friend</button> -->
-	
+
 </div>

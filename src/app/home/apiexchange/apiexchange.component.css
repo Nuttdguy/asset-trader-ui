@@ -1,10 +1,18 @@
+
+
 .btn-submit,
 .btn-delete {
 	background: transparent;
 	width: 20%;
 }
 
-input {
+select {
+	margin-left: 16px;
+	width: 220px;
+	color: #000;
+}
+
+input, select {
 	border-radius: 0px;
 }
 

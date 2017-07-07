@@ -25,6 +25,7 @@ export class AlertService {
         
       }
     });
+    
   }
   
   success(message: string, keepAfterNavigationChange = false) {
@@ -40,7 +41,11 @@ export class AlertService {
   getMessage(): Observable<any> {
     return this.subject.asObservable();
   }
-
+  
+  clearMessage() {
+    this.subject.next();
+  }
+  
 }
 
 

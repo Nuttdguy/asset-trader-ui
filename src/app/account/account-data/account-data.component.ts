@@ -17,10 +17,10 @@ export class AccountDataComponent implements OnInit {
   accountDataWithdrawalHistory: ResultWrapper;
   accountDataDepositHistory: ResultWrapper;
   
-  showOrders=false;
-  showBalances=false;
-  showWithdrawalHistory=false;
-  showDepositHistory=false;
+  showOrders= false;
+  showBalances= false;
+  showWithdrawalHistory= false;
+  showDepositHistory= false;
   
   constructor(private accountDataService: AccountDataService) { }
 
@@ -34,8 +34,8 @@ export class AccountDataComponent implements OnInit {
   onGetAccountBalance() {
     this.showBalances = true;
     this.showOrders = false;
-    this.showWithdrawalHistory=false;
-    this.showDepositHistory=false;
+    this.showWithdrawalHistory = false;
+    this.showDepositHistory = false;
     
     this.accountDataService
         .onGetAccountBalances()
@@ -44,15 +44,15 @@ export class AccountDataComponent implements OnInit {
           console.log('This is account balance');
         },
         error => {
-          console.log('This is an error from account balances');
+          console.log('This is an error from account data - balances');
         });
   }
   
   onGetAccountDataOrderHistory() {
     this.showBalances = false;
     this.showOrders = true;
-    this.showWithdrawalHistory=false;
-    this.showDepositHistory=false;
+    this.showWithdrawalHistory = false;
+    this.showDepositHistory = false;
     
     this.accountDataService
         .onGetAccountOrderHistory()
@@ -68,8 +68,8 @@ export class AccountDataComponent implements OnInit {
   onGetWithdrawalHistory() {
     this.showBalances = false;
     this.showOrders = false;
-    this.showWithdrawalHistory=true;
-    this.showDepositHistory=false;
+    this.showWithdrawalHistory = true;
+    this.showDepositHistory = false;
     
     this.accountDataService
       .onGetWithdrawalHistory()
@@ -85,8 +85,8 @@ export class AccountDataComponent implements OnInit {
   onGetDepositHistory() {
     this.showBalances = false;
     this.showOrders = false;
-    this.showWithdrawalHistory=false;
-    this.showDepositHistory=true;
+    this.showWithdrawalHistory = false;
+    this.showDepositHistory = true;
     
     this.accountDataService
       .onGetDepositHistory()

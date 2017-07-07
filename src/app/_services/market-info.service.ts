@@ -2,7 +2,7 @@
 import { BTCWrapper } from '../_models/btcwrapper';
 import { ResultWrapper } from '../_models';
 import { Injectable } from '@angular/core';
-import { Http, Response, Request } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -16,10 +16,8 @@ export class MarketInfoService {
   // TODO -- ADD METHOD TO GET TOTAL COUNT OF ALL TRANSACTIONS (BUY, SELL, BOTH)
   // TODO -- ADD METHDO TO GET TOTAL COMMISSIONS PAID FOR ALL TRANSACTIONS 
   
-  baseUrl: string;
+  baseUrl: string;  
   baseUrlCoinBase: string;
-  marketInfoUrl: string;
-
 
   constructor(private http: Http) {
     this.baseUrl = 'http://localhost:8080/trader/market/bittrex';
@@ -34,5 +32,4 @@ export class MarketInfoService {
     return this.http.get(this.baseUrlCoinBase).map( res => res.json() );
   }
   
-
 }

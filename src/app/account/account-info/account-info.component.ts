@@ -1,5 +1,5 @@
 import { ResultWrapper, BTCWrapper } from '../../_models';
-import { MarketInfoService } from '../../_services';
+import { MarketInfoService, AccountDataService, AlertService } from '../../_services';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,9 +14,15 @@ export class AccountInfoComponent implements OnInit {
   public doughnutChartData: number[] = [350, 450, 200];
   public doughnutChartType = 'doughnut';
   bitcoinPrice: BTCWrapper;
+  currentBTCPrice: number;
+  denomination: string;
+  currentPortfolioValue: number;
   
   
-  constructor(private marketInfoService: MarketInfoService) { 
+  constructor(
+    private marketInfoService: MarketInfoService,
+    private accountDataService: AccountDataService,
+    private alertService: AlertService) { 
   }
 
   ngOnInit() { 
@@ -35,16 +41,30 @@ export class AccountInfoComponent implements OnInit {
     this.marketInfoService
         .onGetCurrentBitcoinPrice()
         .subscribe( data => { 
-          this.bitcoinPrice = data;
-          
-          console.log('This is bitcoin price');
-          console.log(data);
+           this.bitcoinPrice = data;
+           this.currentBTCPrice = this.bitcoinPrice.data['amount'];
+           this.denomination = this.bitcoinPrice.data['currency'];
+           this.onGetCurrentPortfolioValue(this.bitcoinPrice.data['amount'])
         },
         error => {
+          console.log('THIS IS ERROR FROM ACCOUNT-INFO COMPONENT');
           console.log(error);
-        })
+      })
+
   }
   
+  onGetCurrentPortfolioValue(btc) {
+    this.accountDataService
+      .onGetPortfolioValue(btc)
+      .subscribe( data => { 
+        this.currentPortfolioValue = data.result['portfolioValue'];
+        console.log('THIS IS FROM ACCOUNT-INFO GET CURRENT PORTFOLIO');
+      }, 
+      error => {
+        console.log('THIS IS ERROR FROM ACCOUNT-INFO CURRENT PORTFOLIO');
+        console.log(error);
+      })
+  }
 }
 
 

@@ -3,12 +3,17 @@
 	<a class="return-link" [routerLink]="['/']" ><span class="glyphicon glyphicon-circle-arrow-left">Back</span></a>
 </div>
 
-<div class="container-marketinfo">
-	<div class="col-md-6">
-	
-		<h2>Total Available </h2>
-		<h2>$ 2,678.97 (USD)</h2>
-
+<div class="container-marketinfo row">
+	<div  class="col-md-6">	
+		<div class="btc-price">
+			<p class="btc-price-header ">Current BTC Price </p>
+			<p class="btc-price-value ">$ <span #btcPrice> {{currentBTCPrice}}</span> {{denomination}}</p>
+		</div>
+		
+		<div class="portfolio">
+			<p class="portfolio-header ">Current Portfolio Value </p>
+			<p class="portfolio-value ">$ {{currentPortfolioValue?.toFixed(2)}} {{denomination}}</p>
+		</div>
 	</div>
 	
 	
@@ -19,12 +24,15 @@
 			(chartClick)="chartClicked($event)">
 		</canvas>
 	</div>
-	<div class="row">
-		<div class='padding-left'>
-			<input class="btn-outline" type="button" (click)="showAvgReturn()" value="Return (1m)" />	
-			<input class="btn-outline" type="button" (click)="showAccountChange()" value="Change % (1m)" />		
-			<input class="btn-outline" type="button" (click)="showTotalTransaction()" value="Transaction (Total)" /> 
-			<input class="btn-outline" type="button" (click)="showTotalPaidCommissions()" value="Paid Commissions (Total)" />	
-		</div>
-	</div>
 </div>
+
+<br>
+<div class="container-marketinfo row" >
+	<input class="btn-outline" type="button" (click)="onGetCurrentBitcoinPrice()" value="Update BTC ($)" />
+	<input class="btn-outline" type="button" (click)="onGetCurrentPortfolioValue(btcPrice.innerHTML)" value="Update Portfolio ($)" />
+	<input class="btn-outline" type="button" (click)="showAvgReturn()" value="Return (1m)" />	
+	<input class="btn-outline" type="button" (click)="showAccountChange()" value="Change % (1m)" />		
+	<input class="btn-outline" type="button" (click)="showTotalTransaction()" value="Transaction (Total)" /> 
+	<input class="btn-outline" type="button" (click)="showTotalPaidCommissions()" value="Paid Commissions (Total)" />	
+</div>
+

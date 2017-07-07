@@ -8,16 +8,35 @@ import { AppComponent } from './app.component';
 
 import { CoinComponent } from './coin/coin.component';
 import { ValuesPipe } from './_pipes/values.pipe';
-import { MarketComponent, AccountDataComponent, AccountInfoComponent, AccountComponent } from './account/index';
-import { AccountDataService, AlertService, AuthenticationService, MarketInfoService, UserService, CoinService } from './_services/index';
+
 import { RegisterComponent } from './register/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { ProfileComponent, FavoriteComponent, ApiexchangeComponent, NetworkComponent, PasswordComponent } from './home/index';
 import { ChartsModule } from 'ng2-charts';
 import { TradeComponent } from './account/trade/trade.component';
+
+import { MarketComponent, 
+  AccountDataComponent, 
+  AccountInfoComponent, 
+  AccountComponent } from './account/index';
+
+import { AccountDataService, 
+  FavoriteService, 
+  AlertService, 
+  AuthenticationService, 
+  MarketInfoService, 
+  UserService, 
+  CoinService,
+  SettingsService } from './_services/index';
+
+import { ProfileComponent, 
+  FavoriteComponent, 
+  ApiexchangeComponent, 
+  NetworkComponent, 
+  PasswordComponent } from './home/index';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +72,9 @@ import { TradeComponent } from './account/trade/trade.component';
     AlertService,
     AuthenticationService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    FavoriteService,
+    SettingsService
   ],
   bootstrap: [AppComponent]
 })

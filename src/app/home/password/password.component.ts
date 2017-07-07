@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-password',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./password.component.css']
 })
 export class PasswordComponent implements OnInit {
+  @Input() isPasswordActive: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.isPasswordActive = true;
   }
 
 }

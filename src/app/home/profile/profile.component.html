@@ -7,13 +7,13 @@
 		  <div class="col-sm-6">
 		    <div class="form-group">
 		      <label for="inputFirstName">First Name</label>
-		      <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+		      <input #firstName type="text" class="form-control" id="inputFirstName" placeholder="First Name">
 		    </div>
 		  </div>
 		  <div class="col-sm-6">
 		    <div class="form-group">
 		      <label for="inputLastName">Last Name</label>
-		      <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+		      <input #lastName type="text" class="form-control" id="inputLastName" placeholder="Last Name">
 		    </div>
 		  </div>
 		</div>
@@ -21,13 +21,13 @@
 		  <div class="col-sm-6">
 		    <div class="form-group">
 		      <label for="inputEmail">Email (username)</label>
-		      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+		      <input #userName type="email" class="form-control" id="inputEmail" placeholder="Email">
 		    </div>
 		  </div>
 		</div>
 		
-		<button (click)="onChangeProfile()" class=" btn-outline btn-submit">Submit</button>
-		<button (click)="onDeleteProfile()" class=" btn-outline btn-delete">Delete Account</button>
+		<button (click)="onUpdateProfile(firstName.value, lastName.value, userName.value)" class=" btn-outline btn-submit">Submit</button>
+		<!-- <button (click)="onDeleteProfile()" class=" btn-outline btn-delete">Delete Account</button> -->
 
 	</div>
 	

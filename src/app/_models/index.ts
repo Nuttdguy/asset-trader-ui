@@ -12,6 +12,7 @@ export * from './users.model';
 export * from './btcwrapper';
 export * from './dataPrice';
 export * from './BTCWarnings';
-
-
+export * from './rwfavorite.model';
+export * from './api.model';
+export * from './LocalStorageUser.model';
 
