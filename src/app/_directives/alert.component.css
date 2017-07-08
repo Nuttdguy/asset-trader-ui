@@ -1,0 +1,8 @@
+.alert {
+	background: transparent;
+	text-align: center;
+	border: none;
+	color: rgb(255, 0, 0);
+	font-size: 1.3em;
+	font-weight: bold;
+}

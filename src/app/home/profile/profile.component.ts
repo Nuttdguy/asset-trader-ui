@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
     this.settingsService
       .onUpdateProfile(firstName, lastName, userName)
       .subscribe( data => { 
-        this.alertService.success('Updated profile');
+        this.alertService.success(data.message);
         setTimeout( () => { this.alertService.clearMessage() }, 3000 );
       }, 
       error => { 

@@ -1,3 +1,4 @@
+import { ResultWrapper } from '../../_models';
 import { SettingsService, AlertService } from '../../_services';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -6,8 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './network.component.html',
   styleUrls: ['./network.component.css']
 })
+  
 export class NetworkComponent implements OnInit {
   @Input() isNetworkActive: boolean;
+  friendList: ResultWrapper;
+  showFriend = false;
   
   constructor(
     private settingsService: SettingsService,
@@ -33,6 +37,33 @@ export class NetworkComponent implements OnInit {
       }, 
       error => {
         console.log('THIS IS ERROR FROM NETWORK COMPONENT');
+        console.log(error);
+      })
+  }
+  
+  onShowFriendList() {
+    this.settingsService
+      .onViewFriendList()
+      .subscribe( data => { 
+        this.friendList = data;
+        console.log('THIS IS DATA FROM NETWROK COMPONENT');
+        console.log(data);
+      }, 
+      error => {
+        console.log('THIS IS ERROR FROM NETWORK COMPONENT');
+        console.log(error);
+      })
+  }
+  
+  onDeleteFriend(friendId) {
+    this.settingsService
+      .onDeleteFriend(friendId)
+      .subscribe( data => {  
+        this.alertService.success(data.message);
+        setTimeout( () => { this.alertService.clearMessage() }, 3000 );
+      }, 
+      error => { 
+        console.log('THIS IS AN ERROR FROM DELETE FRIEND');
         console.log(error);
       })
   }
