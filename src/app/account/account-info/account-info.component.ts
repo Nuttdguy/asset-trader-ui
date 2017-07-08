@@ -14,9 +14,9 @@ export class AccountInfoComponent implements OnInit {
   public doughnutChartData: number[] = [350, 450, 200];
   public doughnutChartType = 'doughnut';
   bitcoinPrice: BTCWrapper;
-  currentBTCPrice: number;
+  currentBTCPrice = 0.00;
   denomination: string;
-  currentPortfolioValue: number;
+  currentPortfolioValue = 0.00;
   
   
   constructor(

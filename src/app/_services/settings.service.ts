@@ -15,6 +15,8 @@ export class SettingsService {
   getFriendList = '/friend/list';
   deleteFriend = '/friend/delete';
   updatePassword = '/password/update';
+  deleteFavorite = '/favorite/delete';
+  getFavoriteCoinList = '/favorite/coin/list';
 
   constructor(private http: Http) {}
 
@@ -40,27 +42,34 @@ export class SettingsService {
     friendDetail['active'] = true;
     friendDetail['enableSendTo'] = true;
 
-    return this.http.post(this.baseSettingUrl + this.addFriend, friendDetail).map(res => res.json())
+    return this.http.post(this.baseSettingUrl + this.addFriend, friendDetail).map(res => res.json() );
   }
 
-  
   onViewFriendList(): Observable<ResultWrapper> {
     let jsonObj = this.getLocalUser();
     let id = jsonObj['id'];
-    return this.http.get(this.baseSettingUrl + this.getFriendList + '/' + id).map(res => res.json());
+    return this.http.get(this.baseSettingUrl + this.getFriendList + '/' + id).map(res => res.json() );
   }
 
-  
   onDeleteFriend(friendId): Observable<ResultWrapper> {
-    return this.http.get(this.baseSettingUrl + this.deleteFriend + '/' + friendId).map(res => res.json());
+    return this.http.get(this.baseSettingUrl + this.deleteFriend + '/' + friendId).map(res => res.json() );
   }
-  
   
   onChangePassword(passwordObj): Observable<ResultWrapper> {
     let jsonObj = this.getLocalUser();
     let id = jsonObj['id'];
     passwordObj['id'] = id;
-    return this.http.post(this.baseSettingUrl + this.updatePassword, passwordObj).map( res => res.json());
+    return this.http.post(this.baseSettingUrl + this.updatePassword, passwordObj).map( res => res.json() );
+  }
+  
+  onGetFavoriteCoin(): Observable<ResultWrapper> {
+    let jsonObj = this.getLocalUser();
+    let id = jsonObj['id'];
+    return this.http.get(this.baseSettingUrl + this.getFavoriteCoinList + '/' + id).map( res => res.json() );
+  }
+  
+  onDeleteFavoriteCoin(tokId): Observable<ResultWrapper> {
+    return this.http.delete( this.baseSettingUrl + this.deleteFavorite + '/' + tokId).map( res => res.json() );
   }
   
   

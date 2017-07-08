@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.isProfileActive = true ;
     this.isNetworkActive = false;
     this.isPasswordActive = false;
+    this.isFavoriteActive = false;
   }
   
   showApiExchange() {
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
     this.isProfileActive = false ;
     this.isNetworkActive = false;
     this.isPasswordActive = false;
+    this.isFavoriteActive = false;
   }
   
   showNetwork() {
@@ -45,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.isProfileActive = false ;
     this.isNetworkActive = true;
     this.isPasswordActive = false;
+    this.isFavoriteActive = false;
   }
   
   showPassword() {
@@ -52,5 +55,15 @@ export class HomeComponent implements OnInit {
     this.isProfileActive = false ;
     this.isNetworkActive = false;
     this.isPasswordActive = true;
+    this.isFavoriteActive = false;
   }
+  
+  showFavorite() {
+    this.isApiExchangeLinkActive = false;
+    this.isProfileActive = false ;
+    this.isNetworkActive = false;
+    this.isPasswordActive = false;
+    this.isFavoriteActive = true;
+  }
+  
 }

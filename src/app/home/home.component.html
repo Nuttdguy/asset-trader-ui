@@ -4,7 +4,7 @@
 		<ul class="sidebar-nav">
 			<li class="sidebar-brand"><span class="glyphicon glyphicon-new-window" >View</span></li>
 			<li><a [routerLink]="['/account']"><span class="glyphicon glyphicon-stats" >Account/Market</span></a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-star" >Favorites</span></a></li>
+			<li><a (click)="showFavorite()"><span class="glyphicon glyphicon-star" >Favorites</span></a></li>
 			<li class="sidebar-brand"><span class="glyphicon glyphicon-cog" >Settings</span></li>
 			
 			<li><a (click)="showProfile()" ><span class="glyphicon glyphicon-user">Profile</span></a></li>
