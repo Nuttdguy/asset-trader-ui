@@ -12,6 +12,7 @@ export class AccountDataService {
   withdrawalHistory = '/withdrawalhistory';
   depositHistory = '/deposithistory';
   depositAddress = '/depositaddress';
+  avgReturn = '/balances/profit';
 
   
   constructor(private http: Http) { }
@@ -48,12 +49,16 @@ export class AccountDataService {
   onGetPortfolioValue(btcPrice): Observable<ResultWrapper> {
     let jsonObj = this.getLocalUser();
     let id = jsonObj['id'];
-    
-    console.log('THIS IS BTC PRICE FROM ACCOUNT-DATA ' + btcPrice);
-    
     return this.http.get(this.baseAccountUrl +  this.balances + '/' + btcPrice + '&' + id).map( res => res.json() );
   }
 
+  onShowAvgReturn(btc): Observable<ResultWrapper> {
+    let jsonObj = this.getLocalUser();
+    let id = jsonObj['id'];
+    return this.http.get(this.baseAccountUrl +  this.avgReturn + '/' + btc + '&' + id).map( res => res.json() );
+  }
+  
+  
   // ============================================
   // PRIVATE METHODS
   // ============================================

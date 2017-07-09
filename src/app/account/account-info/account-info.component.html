@@ -7,19 +7,34 @@
 	<div  class="col-md-6">	
 		<div class="btc-price">
 			<p class="btc-price-header ">Current BTC Price </p>
-			<p class="btc-price-value "><span #btcPrice> {{currentBTCPrice | currency:'USD':true}}</span> {{denomination}}</p>
+			<p class="btc-price-value ">$<span #btcPrice>{{currentBTCPrice}}</span> {{denomination}}</p>
 		</div>
 		
 		<div class="portfolio">
 			<p class="portfolio-header ">Current Portfolio Value </p>
 			<p class="portfolio-value ">{{currentPortfolioValue?.toFixed(2) | currency:'USD':true}} {{denomination}}</p>
 		</div>
+		<br>
+		<br>
+		<div>
+			<canvas baseChart 
+				[datasets]="barChartData"
+				[labels]="barChartLabels" 
+				[options]="barChartOptions"
+            	[legend]="barChartLegend"
+            	[chartType]="barChartType"
+				(barHovered)="barHovered($event)"
+				(barClicked)="barClicked($event)">
+			</canvas>
+		</div>
 	</div>
 	
 	
 	<div class="col-md-6">
-		<canvas baseChart [data]="doughnutChartData"
-			[labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+		<canvas baseChart 
+			[data]="doughnutChartData"
+			[labels]="doughnutChartLabels" 
+			[chartType]="doughnutChartType"
 			(chartHover)="chartHovered($event)"
 			(chartClick)="chartClicked($event)">
 		</canvas>
