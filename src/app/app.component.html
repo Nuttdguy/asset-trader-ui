@@ -1,19 +1,22 @@
 
-
 <!-- TODO >> IMPLEMENT CODE TO HIDE/SWITCH OUT NAVIGATION BAR -->
 <nav class="navbar fixed-top ">
 	<div class="navbar-text">
-		<a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in" >Login</span></a> 
+		<a [routerLink]="['/login']"><span
+			class="glyphicon glyphicon-log-in">Login</span></a>
 	</div>
 </nav>
 
-<div class="container-body">
 
+<div class="container-body">
+	
+	<div class="container">
+		<div class="row text-center logo-container">
+			<h1><span class="logo logo-part-one">Trade</span>  <span class="logo logo-part-two" >Share</span> </h1>
+		</div>
+	</div>
+	
 	<app-alert></app-alert>
 	<router-outlet></router-outlet>
-
+	
 </div>
-
-
-
-

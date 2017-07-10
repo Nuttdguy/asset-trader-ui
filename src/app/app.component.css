@@ -22,3 +22,19 @@ div.container.container-wide {
 .container-body {
 	margin-top: 80px;
 }
+
+.logo-container {
+	padding-top: 34px;
+}
+
+.logo.logo-part-one {
+	font-family: fantasy;
+	word-spacing: 1em;
+	text-shadow: 2px 2px 2px #222;
+	font-size: 1.7em;
+}
+
+.logo.logo-part-two {
+	font-family:fantasy ;
+	color: red;
+}
