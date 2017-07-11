@@ -8,7 +8,9 @@
 			<li class="sidebar-brand"><span class="glyphicon glyphicon-cog" >Settings</span></li>
 			
 			<li><a (click)="showProfile()" ><span class="glyphicon glyphicon-user">Profile</span></a></li>
+			<li><a (click)="showEmailOption()" ><span class="glyphicon glyphicon-transfer" >Email-Option</span></a></li>
 			<li><a (click)="showApiExchange()" ><span class="glyphicon glyphicon-transfer" >API/Exchange</span></a></li>
+			<li><a (click)="showExternalWallet()" ><span class="glyphicon glyphicon-user">External-Wallet</span></a></li>
 			<li><a (click)="showNetwork()" ><span class="glyphicon glyphicon-user" >Network</span></a></li>
 			<li><a (click)="showPassword()" ><span class="glyphicon glyphicon-lock" >Password</span></a></li>
 			<li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
@@ -20,17 +22,23 @@
 		
 			<div class="row">
 				<div class="col-md-12">
-					<!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
-	<!-- 			<h4><span>Welcome</span> {{currentUser.firstName}} {{currentUser.lastName}}!</h4> -->
+		 			<h4><span>Welcome</span> 
+		 				{{currentUser?.firstName.toLocaleLowerCase()}} {{currentUser?.lastName}}!</h4>
 					
 					<app-favorite *ngIf="isFavoriteActive" 
 						[isFavoriteActive]="isFavoriteActive"></app-favorite>
 					
 					<app-profile *ngIf="isProfileActive" 
 						[isProfileActive]="isProfileActive"></app-profile>
+						
+					<app-email-option *ngIf="isEmailOptionActive"
+						[isEmailOptionActive]="isEmailOptionActive"></app-email-option>
 					
 					<app-apiexchange *ngIf="isApiExchangeLinkActive" 
 						[isApiExchangeLinkActive]="isApiExchangeLinkActive" ></app-apiexchange>
+						
+					<app-external-wallet *ngIf="isExternalWalletActive" 
+						[isExternalWalletActive]="isExternalWalletActive" ></app-external-wallet>
 					
 					<app-network *ngIf="isNetworkActive" 
 						[isNetworkActive]="isNetworkActive"></app-network>

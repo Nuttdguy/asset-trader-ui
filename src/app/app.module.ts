@@ -36,6 +36,8 @@ import { ProfileComponent,
   ApiexchangeComponent, 
   NetworkComponent, 
   PasswordComponent } from './home/index';
+import { ExternalWalletComponent } from './home/external-wallet/external-wallet.component';
+import { EmailOptionComponent } from './home/email-option/email-option.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ProfileComponent,
     NetworkComponent,
     PasswordComponent,
     TradeComponent,
+    ExternalWalletComponent,
+    EmailOptionComponent,
   ],
   imports: [
     BrowserModule,

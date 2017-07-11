@@ -17,6 +17,8 @@ export class SettingsService {
   updatePassword = '/password/update';
   deleteFavorite = '/favorite/delete';
   getFavoriteCoinList = '/favorite/coin/list';
+  addExternalWallet = '/wallet/add/';
+  getExternalWallet = '/wallet/';
 
   constructor(private http: Http) {}
 
@@ -72,6 +74,18 @@ export class SettingsService {
     return this.http.delete( this.baseSettingUrl + this.deleteFavorite + '/' + tokId).map( res => res.json() );
   }
   
+  onAddExternalWallet(walletDetail):  Observable<ResultWrapper> {
+    let jsonObj = this.getLocalUser();
+    let id = jsonObj['id'];
+    walletDetail['id'] = id;
+    return this.http.post(this.baseSettingUrl + this.addExternalWallet, walletDetail).map(res => res.json() )
+  }
+  
+  onViewCoinFromExternalWallet(): Observable<ResultWrapper> {
+    let jsonObj = this.getLocalUser();
+    let id = jsonObj['id'];
+    return this.http.get(this.baseSettingUrl + this.getExternalWallet + id ).map( res => res.json() );
+  }
   
   // ============================================
   // PRIVATE METHODS

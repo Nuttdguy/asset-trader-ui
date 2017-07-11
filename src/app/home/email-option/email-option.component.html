@@ -1,0 +1,90 @@
+<div class="row">
+
+	<div class="col-md-8 col-md-offset-1">
+		<h3>Send Email Option</h3>
+		<div class="row">
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="Email">Email</label> 
+					<input #email
+						type="email" class="form-control" id="email"
+						placeholder="Example@gmail.com">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="EmailPassword">Email Password</label> 
+					<input #emailPassword
+						type="text" class="form-control" id="emailPassword"
+						placeholder="External email password">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="EmailProvider">Email Provider</label> 
+					<input #emailProvider disabled="disabled"
+						type="text" class="form-control" id="emailProvider"
+						placeholder="Gmail">
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="AccountNote">Notes (120 max) </label> 
+					<input #accountNote maxlength="120" type="text" class="form-control" 
+						id="accountNote"
+						placeholder="Note">
+				</div>
+			</div>			
+		</div>
+		
+		
+		<button (click)="onAddSendEmail() " class=" btn-outline btn-submit">Add External Email</button>
+		<button (click)="onViewSendEmails() " class=" btn-outline btn-submit">View External Emails</button>
+	</div>
+
+</div>
+
+<!-- <div class="row">
+
+	<div class="col-md-8 col-md-offset-1">
+		<table class="table table-inverse table-responsive">
+	
+			<thead *ngIf="friendList != null">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+	
+			<tbody *ngIf="showFriend != null">
+				<tr *ngFor="let data of friendList.result ">
+					<td>{{data?.firstName}}</td>
+					<td>{{data?.lastName}}</td>
+					<td>{{data?.email}}</td>
+					<td><input (click)="onDeleteFriend(data?.id)" type="button" class="btn-outline" value="Delete"/></td>
+				</tr>
+			</tbody>
+		
+		</table>
+
+	</div>
+</div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
